@@ -11,6 +11,8 @@
 // for printing
 #include <iostream>
 
+//#include "std_msgs/Float32.h"
+
 class LaserScanSub {
 private:
 	// Start Node
@@ -19,6 +21,11 @@ private:
 	// Listen for Laser messages
 	ros::Subscriber LaserScan_sub;
 
+	// Publishers
+	ros::Publisher nearest_pub;
+	ros::Publisher furthest_pub;
+
+	
 public:
 	LaserScanSub(){
 		//Initialise Node Handle
@@ -26,14 +33,20 @@ public:
 
 		ROS_INFO_STREAM("LaserScan Subscriber Created");
 
-		//std::cout << "Running";
-
 		// get topic names
-		std::string laser_scan_topic;
+		std::string laser_scan_topic, near_topic, far_topic;
 		n.getParam("scan_topic", laser_scan_topic);
-		
+		n.getParam("nearest_point", near_topic);
+		n.getParam("furthest_point", far_topic);
+
+
 		// Create a subscriber to listen to the laser scan messages
 		LaserScan_sub = n.subscribe(laser_scan_topic, 1, &LaserScanSub::LaserCallBack, this);
+
+		// Create a publisher for nearest/furthest points
+		nearest_pub = n.advertise<float>(near_topic, 1);
+		//furthest_pub = n.advertise<float>(far_topic, 1);
+
 	}
 
 	void LaserCallBack(const sensor_msgs::LaserScan & msg){
@@ -58,6 +71,7 @@ public:
 			}
 		} 
 		ROS_INFO("Closest: %f, Furthest: %f", closest, farthest);
+		//nearest_pub.publish(closest);
 	}
 	
 };
