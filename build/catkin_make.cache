@@ -1,0 +1,2 @@
+f1tenth_simulator
+-DCATKIN_DEVEL_PREFIX=/home/fraser/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/fraser/catkin_ws/install -G Unix Makefiles
