@@ -59,6 +59,7 @@ f1tenth_simulator/CMakeFiles/LaserScan.dir/node/LaserScan.cpp.o: /opt/ros/melodi
 f1tenth_simulator/CMakeFiles/LaserScan.dir/node/LaserScan.cpp.o: /opt/ros/melodic/include/ros/wall_timer_options.h
 f1tenth_simulator/CMakeFiles/LaserScan.dir/node/LaserScan.cpp.o: /opt/ros/melodic/include/rosconsole/macros_generated.h
 f1tenth_simulator/CMakeFiles/LaserScan.dir/node/LaserScan.cpp.o: /opt/ros/melodic/include/sensor_msgs/LaserScan.h
+f1tenth_simulator/CMakeFiles/LaserScan.dir/node/LaserScan.cpp.o: /opt/ros/melodic/include/std_msgs/Float64.h
 f1tenth_simulator/CMakeFiles/LaserScan.dir/node/LaserScan.cpp.o: /opt/ros/melodic/include/std_msgs/Header.h
 f1tenth_simulator/CMakeFiles/LaserScan.dir/node/LaserScan.cpp.o: /opt/ros/melodic/include/xmlrpcpp/XmlRpcDecl.h
 f1tenth_simulator/CMakeFiles/LaserScan.dir/node/LaserScan.cpp.o: /opt/ros/melodic/include/xmlrpcpp/XmlRpcValue.h

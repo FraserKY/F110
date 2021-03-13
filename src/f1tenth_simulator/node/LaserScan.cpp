@@ -11,7 +11,7 @@
 // for printing
 #include <iostream>
 
-//#include "std_msgs/Float32.h"
+#include <std_msgs/Float64.h>
 
 class LaserScanSub {
 private:
@@ -44,8 +44,8 @@ public:
 		LaserScan_sub = n.subscribe(laser_scan_topic, 1, &LaserScanSub::LaserCallBack, this);
 
 		// Create a publisher for nearest/furthest points
-		nearest_pub = n.advertise<float>(near_topic, 1);
-		//furthest_pub = n.advertise<float>(far_topic, 1);
+		nearest_pub = n.advertise<std_msgs::Float64>(near_topic, 1);
+		furthest_pub = n.advertise<std_msgs::Float64>(far_topic, 1);
 
 	}
 
@@ -55,10 +55,11 @@ public:
 		
 		// Define closest and furthest variables
 		// Set to first value in array
-		float closest = msg.ranges[0];	
-		float farthest = msg.ranges[0];	
+	   	_Float32 closest = msg.ranges[0];	
+		_Float32 farthest = msg.ranges[0];	
 
 		//Calculate nearest and furthest points
+		// The code below loops through the array of ranges returned by the LaserScan variable, and finds the longest and shortest distances
 		for (unsigned int i = 0; i < msg.ranges.size(); i++) {
 
 			if(msg.ranges[i] > farthest  && msg.ranges[i] <= msg.range_max) {
@@ -70,8 +71,15 @@ public:
 				closest = msg.ranges[i];	
 			}
 		} 
-		ROS_INFO("Closest: %f, Furthest: %f", closest, farthest);
-		//nearest_pub.publish(closest);
+		//ROS_INFO("Closest: %f, Furthest: %f", closest, farthest);
+
+		std_msgs::Float64 close, far;
+
+		close.data = closest;
+		far.data = farthest;
+
+		nearest_pub.publish(close);
+		furthest_pub.publish(far);
 	}
 	
 };
