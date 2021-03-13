@@ -14,6 +14,7 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
 find_package(Eigen3)
 
+
 ######################################
 # Compile the library >
 ######################################
@@ -31,6 +32,7 @@ install(TARGETS ${PROJECT_NAME}
         DESTINATION lib)
 install(DIRECTORY include/${PROJECT_NAME}
         DESTINATION include)
+
 
 ######################################
 # < End compile the library
@@ -59,14 +61,20 @@ if(DEFINED CATKIN_DEVEL_PREFIX)
     std_msgs
     message_generation
     )
+  
+   add_message_files(
+     FILES
+     scan_range.msg
+    )
+    
 
   generate_messages(
     DEPENDENCIES
     std_msgs
     nav_msgs
     sensor_msgs
+    scan_range
     )
-
 
 
 
