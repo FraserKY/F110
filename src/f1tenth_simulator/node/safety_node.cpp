@@ -7,7 +7,7 @@
 #include <sensor_msgs/LaserScan.h>
 // TODO: include ROS msg type headers and libraries
 
-#include <ackermann_msgs/AckermannDrive.h>
+#include <ackermann_msgs/AckermannDriveStamped.h>
 #include <std_msgs/bool.h>
 
 #include <ros/console.h>
@@ -59,10 +59,7 @@ public:
         odom_data = n.subscribe(odom_topic, 1, &Safety::odom_callback, this);
 
         break_bool = n.advertise<std_msgs::bool>(break_bool_tpc, 1);
-        break_ = n.advertise<ackermann_msgs::
-
-
-
+        break_ = n.advertise<ackermann_msgs::AckermannDriveStamped>(break_tpc, 1);
 
 
     }
