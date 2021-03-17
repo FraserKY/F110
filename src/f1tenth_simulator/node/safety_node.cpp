@@ -52,8 +52,14 @@ public:
         n.getparam("break_bool_topic", break_bool_tpc)
 
         // TODO: create ROS subscribers and publishers
+        //subscribe to laser_scan topic
+        laser_scan_data = n.subscribe(laser_scan_topic, 1, &Safety::scan_callback, this);
 
-        laser_scan_data = n.subscribe()
+        //subscribe to odom topic
+        odom_data = n.subscribe(odom_topic, 1, &Safety::odom_callback, this);
+
+        break_bool = n.advertise<std_msgs::bool>(break_bool_tpc, 1);
+        break_ = n.advertise<ackermann_msgs::
 
 
 
