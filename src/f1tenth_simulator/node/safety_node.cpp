@@ -65,11 +65,15 @@ public:
     }
     void odom_callback(const nav_msgs::Odometry::ConstPtr &odom_msg) {
         // TODO: update current speed
-        speed = 0.0;
+        speed = odom_msg.linear.x;
     }
 
     void scan_callback(const sensor_msgs::LaserScan::ConstPtr &scan_msg) {
         // TODO: calculate TTC
+        // Need to calculate TTC for each beam in a laser scan message
+
+
+
 
         // TODO: publish drive/brake message
     }
