@@ -7,12 +7,25 @@
 #include <sensor_msgs/LaserScan.h>
 // TODO: include ROS msg type headers and libraries
 
+#include <ackermann_msgs/AckermannDrive.h>
+#include <std_msgs/bool.h>
+
+#include <ros/console.h>
+
 class Safety {
 // The class that handles emergency braking
 private:
     ros::NodeHandle n;
     double speed;
     // TODO: create ROS subscribers and publishers
+
+    // get laser scan and speed data
+    ros::Subscriber laser_scan_data;
+    ros::Subscriber odom_data;
+
+    //create publishers for brake_bool and break topics
+    ros::Publisher break_bool;
+    ros::Publisher break_;
 
 public:
     Safety() {
@@ -31,12 +44,18 @@ public:
         NOTE that the x component of the linear velocity in odom is the speed
         */
 
-        // TODO: create ROS subscribers and publishers
-        // get laser scan and speed data
-        ros::Subscriber laser_scan_data;
-        ros::Subscriber odom_data;
+        // Get topic names
+        std::string laser_scan_topic, odom_topic, break_tpc, break_bool_tpc;
+        n.getparam("scan_topic", laser_scan_topic);
+        n.getparam("odom_topic", odom_topic);
+        n.getparam("break_drive_topic", break_tpc);
+        n.getparam("break_bool_topic", break_bool_tpc)
 
-        //create publishers for
+        // TODO: create ROS subscribers and publishers
+
+        laser_scan_data = n.subscribe()
+
+
 
 
 
