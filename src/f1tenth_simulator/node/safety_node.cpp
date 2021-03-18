@@ -18,6 +18,7 @@
 #include <ros/console.h>
 
 #include <math.h>
+#include <algorithm>
 
 class Safety {
 // The class that handles emergency braking
@@ -62,7 +63,7 @@ public:
 
         // TODO: create ROS subscribers and publishers
         //subscribe to laser_scan topic
-        laser_scan_data = n.subscribe(laser_scan_topic, 10, &Safety::scan_callback, this);
+        laser_scan_data = n.subscribe(laser_scan_topic, 100, &Safety::scan_callback, this);
         ROS_INFO_STREAM("created laser_scan subscriber");
 
         //subscribe to odom topic
@@ -77,6 +78,7 @@ public:
     void odom_callback(const nav_msgs::Odometry::ConstPtr &odom_msg) {
         // TODO: update current speed
         speed = odom_msg->twist.twist.linear.x;
+        ///ROS_INFO_STREAM("Speed:" << speed);
     }
 
     void scan_callback(const sensor_msgs::LaserScan::ConstPtr &scan_msg) {
@@ -86,20 +88,35 @@ public:
         //ROS_INFO_STREAM("scan_callback");
         
         int length = sizeof(scan_msg->ranges);
-        double r_dot;
-
+        
         for (int i = 0; i <= length; i ++)
         {
-            if(isinf(scan_msg.ranges[i]) == 0 && isnan(scan_msg.ranges[i]) == 0)
-           // ROS_INFO_STREAM(scan_msg->angle_min);
-           //Calculate TTC
-            r_dot = speed * cos(scan_msg->angle_min + (scan_msg->angle_increment * i));
+            if(speed != 0.00){
+                
+                if(isinf(scan_msg->ranges[i]) == 0 && isnan(scan_msg->ranges[i]) == 0)
+                    {
+                    // ROS_INFO_STREAM(scan_msg->angle_min);
+                    //Calculate TTC
 
-            ROS_INFO_STREAM("r_dot: " << r_dot);
+                    double r_dot = speed * cos(scan_msg->angle_min + (scan_msg->angle_increment * i));
+                    
+                    //ROS_INFO_STREAM(scan_msg->angle_increment);
+                    //ROS_INFO_STREAM(scan_msg->angle_min + (scan_msg->angle_increment * i));
+                    //ROS_INFO_STREAM("r_dot: " << r_dot);
 
-            TTC = (scan_msg->ranges[i]) / (-r_dot);
+                    TTC = (scan_msg->ranges[i]) / std::max(-r_dot, 0.00);
 
-            ROS_INFO_STREAM(TTC);
+                
+                    ROS_INFO_STREAM("TTC: " << TTC);
+                    ROS_INFO_STREAM("Speed: " << speed);
+                    //ROS_INFO_STREAM(scan_msg->ranges[i]);
+                    if(TTC < 0.8){
+                        ROS_INFO_STREAM("TTC Limit");
+                    }
+            }
+            
+
+            }
            
         }
 
@@ -112,6 +129,7 @@ public:
 int main(int argc, char ** argv) {
     ros::init(argc, argv, "safety_node");
     Safety sn;
+    //ros::Rate rate(1); //Pump callbacks once per second
     ros::spin();
     return 0;
 }
