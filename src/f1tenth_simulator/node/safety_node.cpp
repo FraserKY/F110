@@ -17,6 +17,9 @@ class Safety {
 private:
     ros::NodeHandle n;
     double speed;
+
+
+
     // TODO: create ROS subscribers and publishers
 
     // get laser scan and speed data
@@ -71,6 +74,19 @@ public:
     void scan_callback(const sensor_msgs::LaserScan::ConstPtr &scan_msg) {
         // TODO: calculate TTC
         // Need to calculate TTC for each beam in a laser scan message
+        double TTC;
+        //double angle_range = scan_msg.angle_max - scan_msg.angle_min;
+        int length = sizeof(scan_msg.ranges);
+        double r_dot;
+
+        for (int i  = 1; i <= length; i++)
+        {
+        ROS_INFO_STREAM(scan_msg.angle_min)
+         //r_dot = speed * cosine(scan_msg.angle_min)
+
+        }
+
+
 
 
 
