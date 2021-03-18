@@ -85,13 +85,13 @@ public:
         // TODO: calculate TTC
         // Need to calculate TTC for each beam in a laser scan message
         double TTC;
-        //ROS_INFO_STREAM("scan_callback");
+        bool engage_em_brake = 0;
         
         int length = sizeof(scan_msg->ranges);
         
         for (int i = 0; i <= length; i ++)
         {
-            if(speed != 0.00){
+            if(speed > 0.08){
                 
                 if(isinf(scan_msg->ranges[i]) == 0 && isnan(scan_msg->ranges[i]) == 0)
                     {
@@ -107,11 +107,13 @@ public:
                     TTC = (scan_msg->ranges[i]) / std::max(-r_dot, 0.00);
 
                 
-                    ROS_INFO_STREAM("TTC: " << TTC);
-                    ROS_INFO_STREAM("Speed: " << speed);
+                    //ROS_INFO_STREAM("TTC: " << TTC);
+                    //ROS_INFO_STREAM("Speed: " << speed);
                     //ROS_INFO_STREAM(scan_msg->ranges[i]);
-                    if(TTC < 0.8){
+                    if(TTC < 2){
                         ROS_INFO_STREAM("TTC Limit");
+                        engage_em_brake = true;
+                        break;
                     }
             }
             
@@ -123,6 +125,14 @@ public:
 
 
         // TODO: publish drive/brake message
+        if (engage_em_brake == true){
+            //create ackermman stamped message
+
+
+            //publish
+            
+        }
+
     }
 
 };
