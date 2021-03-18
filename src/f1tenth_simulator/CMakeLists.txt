@@ -54,7 +54,6 @@ if(DEFINED CATKIN_DEVEL_PREFIX)
     nav_msgs
     sensor_msgs
     geometry_msgs
-
     interactive_markers
     visualization_msgs
 
@@ -64,7 +63,7 @@ if(DEFINED CATKIN_DEVEL_PREFIX)
   
    add_message_files(
      FILES
-     scan_range.msg
+     #scan_range.msg
     )
     
 
@@ -73,7 +72,7 @@ if(DEFINED CATKIN_DEVEL_PREFIX)
     std_msgs
     nav_msgs
     sensor_msgs
-    scan_range
+    #scan_range
     )
 
 

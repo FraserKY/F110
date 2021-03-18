@@ -285,6 +285,19 @@ gtest/fast:
 .PHONY : gtest/fast
 
 #=============================================================================
+# Target rules for targets named simulator
+
+# Build rule for target.
+simulator: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 simulator
+.PHONY : simulator
+
+# fast build rule for target.
+simulator/fast:
+	$(MAKE) -f f1tenth_simulator/CMakeFiles/simulator.dir/build.make f1tenth_simulator/CMakeFiles/simulator.dir/build
+.PHONY : simulator/fast
+
+#=============================================================================
 # Target rules for targets named f1tenth_simulator_generate_messages_nodejs
 
 # Build rule for target.
@@ -686,19 +699,6 @@ rosgraph_msgs_generate_messages_eus: cmake_check_build_system
 rosgraph_msgs_generate_messages_eus/fast:
 	$(MAKE) -f f1tenth_simulator/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make f1tenth_simulator/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
 .PHONY : rosgraph_msgs_generate_messages_eus/fast
-
-#=============================================================================
-# Target rules for targets named simulator
-
-# Build rule for target.
-simulator: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 simulator
-.PHONY : simulator
-
-# fast build rule for target.
-simulator/fast:
-	$(MAKE) -f f1tenth_simulator/CMakeFiles/simulator.dir/build.make f1tenth_simulator/CMakeFiles/simulator.dir/build
-.PHONY : simulator/fast
 
 #=============================================================================
 # Target rules for targets named rosgraph_msgs_generate_messages_lisp
@@ -1298,6 +1298,19 @@ keyboard/fast:
 	$(MAKE) -f f1tenth_simulator/CMakeFiles/keyboard.dir/build.make f1tenth_simulator/CMakeFiles/keyboard.dir/build
 .PHONY : keyboard/fast
 
+#=============================================================================
+# Target rules for targets named safety_node
+
+# Build rule for target.
+safety_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 safety_node
+.PHONY : safety_node
+
+# fast build rule for target.
+safety_node/fast:
+	$(MAKE) -f f1tenth_simulator/CMakeFiles/safety_node.dir/build.make f1tenth_simulator/CMakeFiles/safety_node.dir/build
+.PHONY : safety_node/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -1320,6 +1333,7 @@ help:
 	@echo "... gmock"
 	@echo "... gtest_main"
 	@echo "... gtest"
+	@echo "... simulator"
 	@echo "... f1tenth_simulator_generate_messages_nodejs"
 	@echo "... actionlib_generate_messages_eus"
 	@echo "... actionlib_msgs_generate_messages_py"
@@ -1351,7 +1365,6 @@ help:
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... f1tenth_simulator_generate_messages_cpp"
 	@echo "... rosgraph_msgs_generate_messages_eus"
-	@echo "... simulator"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... f1tenth_simulator_genlisp"
 	@echo "... std_msgs_generate_messages_cpp"
@@ -1398,6 +1411,7 @@ help:
 	@echo "... roscpp_generate_messages_cpp"
 	@echo "... f1tenth_simulator_generate_messages_lisp"
 	@echo "... keyboard"
+	@echo "... safety_node"
 .PHONY : help
 
 

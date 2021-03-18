@@ -168,6 +168,21 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+f1tenth_simulator/CMakeFiles/simulator.dir/rule:
+	cd /home/fraser/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 f1tenth_simulator/CMakeFiles/simulator.dir/rule
+.PHONY : f1tenth_simulator/CMakeFiles/simulator.dir/rule
+
+# Convenience name for target.
+simulator: f1tenth_simulator/CMakeFiles/simulator.dir/rule
+
+.PHONY : simulator
+
+# fast build rule for target.
+simulator/fast:
+	cd /home/fraser/catkin_ws/build && $(MAKE) -f f1tenth_simulator/CMakeFiles/simulator.dir/build.make f1tenth_simulator/CMakeFiles/simulator.dir/build
+.PHONY : simulator/fast
+
+# Convenience name for target.
 f1tenth_simulator/CMakeFiles/f1tenth_simulator_generate_messages_nodejs.dir/rule:
 	cd /home/fraser/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 f1tenth_simulator/CMakeFiles/f1tenth_simulator_generate_messages_nodejs.dir/rule
 .PHONY : f1tenth_simulator/CMakeFiles/f1tenth_simulator_generate_messages_nodejs.dir/rule
@@ -631,21 +646,6 @@ rosgraph_msgs_generate_messages_eus: f1tenth_simulator/CMakeFiles/rosgraph_msgs_
 rosgraph_msgs_generate_messages_eus/fast:
 	cd /home/fraser/catkin_ws/build && $(MAKE) -f f1tenth_simulator/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make f1tenth_simulator/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
 .PHONY : rosgraph_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-f1tenth_simulator/CMakeFiles/simulator.dir/rule:
-	cd /home/fraser/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 f1tenth_simulator/CMakeFiles/simulator.dir/rule
-.PHONY : f1tenth_simulator/CMakeFiles/simulator.dir/rule
-
-# Convenience name for target.
-simulator: f1tenth_simulator/CMakeFiles/simulator.dir/rule
-
-.PHONY : simulator
-
-# fast build rule for target.
-simulator/fast:
-	cd /home/fraser/catkin_ws/build && $(MAKE) -f f1tenth_simulator/CMakeFiles/simulator.dir/build.make f1tenth_simulator/CMakeFiles/simulator.dir/build
-.PHONY : simulator/fast
 
 # Convenience name for target.
 f1tenth_simulator/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule:
@@ -1337,6 +1337,21 @@ keyboard/fast:
 	cd /home/fraser/catkin_ws/build && $(MAKE) -f f1tenth_simulator/CMakeFiles/keyboard.dir/build.make f1tenth_simulator/CMakeFiles/keyboard.dir/build
 .PHONY : keyboard/fast
 
+# Convenience name for target.
+f1tenth_simulator/CMakeFiles/safety_node.dir/rule:
+	cd /home/fraser/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 f1tenth_simulator/CMakeFiles/safety_node.dir/rule
+.PHONY : f1tenth_simulator/CMakeFiles/safety_node.dir/rule
+
+# Convenience name for target.
+safety_node: f1tenth_simulator/CMakeFiles/safety_node.dir/rule
+
+.PHONY : safety_node
+
+# fast build rule for target.
+safety_node/fast:
+	cd /home/fraser/catkin_ws/build && $(MAKE) -f f1tenth_simulator/CMakeFiles/safety_node.dir/build.make f1tenth_simulator/CMakeFiles/safety_node.dir/build
+.PHONY : safety_node/fast
+
 node/LaserScan.o: node/LaserScan.cpp.o
 
 .PHONY : node/LaserScan.o
@@ -1471,6 +1486,33 @@ node/random_walk.s: node/random_walk.cpp.s
 node/random_walk.cpp.s:
 	cd /home/fraser/catkin_ws/build && $(MAKE) -f f1tenth_simulator/CMakeFiles/random_walk.dir/build.make f1tenth_simulator/CMakeFiles/random_walk.dir/node/random_walk.cpp.s
 .PHONY : node/random_walk.cpp.s
+
+node/safety_node.o: node/safety_node.cpp.o
+
+.PHONY : node/safety_node.o
+
+# target to build an object file
+node/safety_node.cpp.o:
+	cd /home/fraser/catkin_ws/build && $(MAKE) -f f1tenth_simulator/CMakeFiles/safety_node.dir/build.make f1tenth_simulator/CMakeFiles/safety_node.dir/node/safety_node.cpp.o
+.PHONY : node/safety_node.cpp.o
+
+node/safety_node.i: node/safety_node.cpp.i
+
+.PHONY : node/safety_node.i
+
+# target to preprocess a source file
+node/safety_node.cpp.i:
+	cd /home/fraser/catkin_ws/build && $(MAKE) -f f1tenth_simulator/CMakeFiles/safety_node.dir/build.make f1tenth_simulator/CMakeFiles/safety_node.dir/node/safety_node.cpp.i
+.PHONY : node/safety_node.cpp.i
+
+node/safety_node.s: node/safety_node.cpp.s
+
+.PHONY : node/safety_node.s
+
+# target to generate assembly for a file
+node/safety_node.cpp.s:
+	cd /home/fraser/catkin_ws/build && $(MAKE) -f f1tenth_simulator/CMakeFiles/safety_node.dir/build.make f1tenth_simulator/CMakeFiles/safety_node.dir/node/safety_node.cpp.s
+.PHONY : node/safety_node.cpp.s
 
 node/simulator.o: node/simulator.cpp.o
 
@@ -1644,6 +1686,7 @@ help:
 	@echo "... install/local"
 	@echo "... install"
 	@echo "... list_install_components"
+	@echo "... simulator"
 	@echo "... f1tenth_simulator_generate_messages_nodejs"
 	@echo "... actionlib_generate_messages_eus"
 	@echo "... actionlib_msgs_generate_messages_py"
@@ -1676,7 +1719,6 @@ help:
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... f1tenth_simulator_generate_messages_cpp"
 	@echo "... rosgraph_msgs_generate_messages_eus"
-	@echo "... simulator"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... f1tenth_simulator_genlisp"
 	@echo "... std_msgs_generate_messages_cpp"
@@ -1725,6 +1767,7 @@ help:
 	@echo "... roscpp_generate_messages_cpp"
 	@echo "... f1tenth_simulator_generate_messages_lisp"
 	@echo "... keyboard"
+	@echo "... safety_node"
 	@echo "... node/LaserScan.o"
 	@echo "... node/LaserScan.i"
 	@echo "... node/LaserScan.s"
@@ -1740,6 +1783,9 @@ help:
 	@echo "... node/random_walk.o"
 	@echo "... node/random_walk.i"
 	@echo "... node/random_walk.s"
+	@echo "... node/safety_node.o"
+	@echo "... node/safety_node.i"
+	@echo "... node/safety_node.s"
 	@echo "... node/simulator.o"
 	@echo "... node/simulator.i"
 	@echo "... node/simulator.s"
