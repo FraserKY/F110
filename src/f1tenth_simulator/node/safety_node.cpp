@@ -106,9 +106,9 @@ public:
         // Need to calculate TTC for each beam in a laser scan message
         bool engage_em_brake = 0;
         
-        int length;
+        //int length;
 
-        ROS_INFO_STREAM("Number of values in LS ranges Array is: " << length);
+        //ROS_INFO_STREAM("Number of values in LS ranges Array is: " << length);
 
 
         //  TODO: Create a function that checks for collision

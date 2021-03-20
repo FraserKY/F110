@@ -6,6 +6,8 @@
 
 #IncludeRegexTransform: 
 
+/home/fraser/catkin_ws/src/f1tenth_simulator/include/f1tenth_simulator/precompute.hpp
+
 /home/fraser/catkin_ws/src/f1tenth_simulator/node/safety_node.cpp
 ros/ros.h
 -
@@ -25,6 +27,8 @@ math.h
 -
 algorithm
 -
+f1tenth_simulator/precompute.hpp
+/home/fraser/catkin_ws/src/f1tenth_simulator/node/f1tenth_simulator/precompute.hpp
 
 /opt/ros/melodic/include/ackermann_msgs/AckermannDrive.h
 string
