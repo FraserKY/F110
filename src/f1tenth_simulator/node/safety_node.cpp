@@ -120,8 +120,8 @@ public:
                 if(isinf(scan_msg->ranges[i]) == 0 && isnan(scan_msg->ranges[i]) == 0)
                 {
                     // Calculate TTC
-                    float r_dot = car_speed * cosines[i];
-                    float TTC = (scan_msg->ranges[i] - car_distances[i]) / std::max(-r_dot, 0.00);
+                    double r_dot = car_speed * cosines[i];
+                    double TTC = (scan_msg->ranges[i] - car_distances[i]) / -r_dot;// std::max(-r_dot, 0.00);
 
                 
                     ROS_INFO_STREAM("Beam" << i << "TTC: " << TTC);
