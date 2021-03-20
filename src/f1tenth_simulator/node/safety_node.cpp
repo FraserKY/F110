@@ -133,10 +133,10 @@ public:
                     //ROS_INFO_STREAM("Speed: " << speed);
                     //ROS_INFO_STREAM(scan_msg->ranges[i]);
 
-                    if(TTC < TTC_threshold && isinf(TTC) == 0 && isnan(TTC) == 0){
-                        ROS_INFO_STREAM("TTC Limit");
+                    if(TTC <= (TTC_threshold * car_speed / 8.26) && isinf(TTC) == 0 && isnan(TTC) == 0){
+                        //ROS_INFO_STREAM("TTC Limit");
                         engage_em_brake = true;
-                        ROS_INFO_STREAM("Beam " << i << ", TTC: " << TTC);
+                        //ROS_INFO ("Beam " << i << ", TTC: " << TTC);
                         break;
                     }
                 }
@@ -146,14 +146,13 @@ public:
         }
 
 
-
-        // TODO: publish drive/brake message
+        // publish drive/brake message
         if (engage_em_brake){
-            ROS_INFO_STREAM("Publish statment reached");
-            // Create bool message 
+
+            // Create bool message
             std_msgs::Bool brake_bool_msg;
 
-            brake_bool_msg.data = true; 
+            brake_bool_msg.data = true;
             // Send message to behaviour controller
             brake_bool.publish(brake_bool_msg);
 
@@ -162,13 +161,15 @@ public:
             ackermann_msgs::AckermannDriveStamped drive_st_msg;
             ackermann_msgs::AckermannDrive drive_msg;
 
-            drive_msg.speed = 0;
-            drive_msg.steering_angle = 0;
+            drive_msg.speed = 0.f;
+            //drive_msg.steering_angle = 0;
 
             drive_st_msg.drive = drive_msg;
 
             //publish
             brake_.publish(drive_st_msg);
+
+            ROS_INFO_STREAM("Emergency Brake Engaged");
             
         }
 
