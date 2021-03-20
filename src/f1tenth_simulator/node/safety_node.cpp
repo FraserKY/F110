@@ -7,7 +7,6 @@
 // For printing messages
 #include <ros/console.h>
 
-
 #include <nav_msgs/Odometry.h>
 #include <sensor_msgs/LaserScan.h>
 // TODO: include ROS msg type headers and libraries
@@ -24,7 +23,7 @@ class Safety {
 // The class that handles emergency braking
 private:
     ros::NodeHandle n;
-    float speed;
+    float car_speed;
     // TODO: create ROS subscribers and publishers
 
     // get laser scan and speed data
@@ -78,7 +77,7 @@ public:
     void odom_callback(const nav_msgs::Odometry::ConstPtr &odom_msg) {
         // TODO: update current speed
         car_speed = odom_msg->twist.twist.linear.x;
-        ///ROS_INFO_STREAM("Speed:" << speed);
+        // ROS_INFO_STREAM("Speed:" << speed);
     }
 
     void scan_callback(const sensor_msgs::LaserScan::ConstPtr &scan_msg) {
@@ -142,6 +141,8 @@ public:
     }
 
 };
+
+
 int main(int argc, char ** argv) {
     ros::init(argc, argv, "safety_node");
     Safety sn;

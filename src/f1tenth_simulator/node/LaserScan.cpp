@@ -70,6 +70,7 @@ public:
 
 				closest = msg.ranges[i];	
 			}
+
 		} 
 		//ROS_INFO("Closest: %f, Furthest: %f", closest, farthest);
 
