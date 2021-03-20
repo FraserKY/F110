@@ -144,10 +144,22 @@ public:
 
         // TODO: publish drive/brake message
         if (engage_em_brake){
-            //create ackermann stamped message
 
+            // Send message to behaviour controller
+            brake_bool.publish(true)
+
+            //create ackermann stamped message
+            // initialize message to be published
+            ackermann_msgs::AckermannDriveStamped drive_st_msg;
+            ackermann_msgs::AckermannDrive drive_msg;
+
+            drive_msg.speed = 0;
+            drive_msg.steering_angle = 0;
+
+            drive_st_msg.drive = drive_msg;
 
             //publish
+            brake_.publish(drive_st_msg);
             
         }
 

@@ -181,7 +181,7 @@ public:
         }
         if (!anything_on) {
             // if no mux channel is active, halt the car
-            publish_to_drive(0.0, 0.0);
+            publish_to_drive( 0.0, 0.0);
         }
     }
 
