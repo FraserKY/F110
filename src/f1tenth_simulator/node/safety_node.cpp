@@ -75,9 +75,8 @@ public:
         std::vector<double> car_distances;
 
         // Precompute cosine and distance to car at each angle of the laser scan
-        cosines = get_cosines(scan_beams, -scan_fov/2.0, scan_ang_incr);
-
-        car_distances = Precompute::get_car_distances(scan_beams, wheelbase, width,
+        cosines = racecar_simulator::Precompute::get_cosines(scan_beams, -scan_fov/2.0, scan_ang_incr);
+        car_distances = racecar_simulator::Precompute::get_car_distances(scan_beams, wheelbase, width,
                                                       scan_distance_to_base_link, -scan_fov/2.0, scan_ang_incr);
 
         // TODO: create ROS subscribers and publishers
@@ -156,7 +155,7 @@ public:
 
     ///----- Other Functions ----///
 
-std::vector<double> get_cosines(int scan_beams, double angle_min, double scan_ang_incr) {
+/*std::vector<double> get_cosines(int scan_beams, double angle_min, double scan_ang_incr) {
     // Precompute distance from lidar to edge of car for each beam
     std::vector<double> cosines = std::vector<double>();
     cosines.reserve(scan_beams);
@@ -167,7 +166,7 @@ std::vector<double> get_cosines(int scan_beams, double angle_min, double scan_an
     }
 
     return cosines;
-}
+}*/
 
 int main(int argc, char ** argv) {
     ros::init(argc, argv, "safety_node");
