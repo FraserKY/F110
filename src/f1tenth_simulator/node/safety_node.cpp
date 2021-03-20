@@ -63,7 +63,7 @@ public:
         //Get Variables required to pre-compute cosines and distance to car
         int scan_beams;
         double scan_fov, scan_ang_incr, wheelbase, width, scan_distance_to_base_link;
-        n.getParam("ttc_threshold", ttc_threshold);
+        //n.getParam("ttc_threshold", ttc_threshold);
         n.getParam("scan_beams", scan_beams);
         n.getParam("scan_distance_to_base_link", scan_distance_to_base_link);
         n.getParam("width", width);
@@ -75,7 +75,8 @@ public:
         std::vector<double> car_distances;
 
         // Precompute cosine and distance to car at each angle of the laser scan
-        cosines = Precompute::get_cosines(scan_beams, -scan_fov/2.0, scan_ang_incr);
+        cosines = get_cosines(scan_beams, -scan_fov/2.0, scan_ang_incr);
+
         car_distances = Precompute::get_car_distances(scan_beams, wheelbase, width,
                                                       scan_distance_to_base_link, -scan_fov/2.0, scan_ang_incr);
 
@@ -152,6 +153,21 @@ public:
 
 };
 
+
+    ///----- Other Functions ----///
+
+std::vector<double> get_cosines(int scan_beams, double angle_min, double scan_ang_incr) {
+    // Precompute distance from lidar to edge of car for each beam
+    std::vector<double> cosines = std::vector<double>();
+    cosines.reserve(scan_beams);
+
+    for (int i = 0; i < scan_beams; i++) {
+        double angle = angle_min + i * scan_ang_incr;
+        cosines[i] = std::cos(angle);
+    }
+
+    return cosines;
+}
 
 int main(int argc, char ** argv) {
     ros::init(argc, argv, "safety_node");
