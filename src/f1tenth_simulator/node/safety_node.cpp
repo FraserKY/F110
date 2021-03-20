@@ -25,12 +25,12 @@ class Safety {
 // The class that handles emergency braking
 private:
     ros::NodeHandle n;
-    float car_speed;
+    double car_speed;
 
     std::vector<double> cosines;
     std::vector<double> car_distances;
 
-    double TTC_threshold;
+    double TTC_threshold_AEB;
 
     // TODO: create ROS subscribers and publishers
 
@@ -67,7 +67,7 @@ public:
         n.getParam("brake_bool_topic", brake_bool_tpc);
 
         // Get TTC threshold
-        n.getParam("ttc_threshold_AEB", TTC_threshold);
+        n.getParam("ttc_threshold_AEB", TTC_threshold_AEB);
 
         //Get Variables required to pre-compute cosines and distance to car
         int scan_beams;
@@ -103,7 +103,7 @@ public:
     void odom_callback(const nav_msgs::Odometry::ConstPtr &odom_msg) {
         // TODO: update current speed
         car_speed = odom_msg->twist.twist.linear.x;
-        // ROS_INFO_STREAM("Speed:" << speed);
+        //ROS_INFO_STREAM("Speed:" << car_speed);
     }
 
     void scan_callback(const sensor_msgs::LaserScan::ConstPtr &scan_msg) {
@@ -118,8 +118,11 @@ public:
 
         //  TODO: Create a function that checks for collision
         //Set a threshold for speed above which AEB is activated
-        if(car_speed != 0.0)
+        double abs_velocity = std::abs(car_speed);
+
+        if(abs_velocity > 0.0)
         {
+            
             // Loop through array of distance values from LIDAR and calc the TTC
             for (int i = 0; i <= 1080; i ++)   //scan_beams
             {
@@ -127,51 +130,57 @@ public:
                 if(isinf(scan_msg->ranges[i]) == 0 && isnan(scan_msg->ranges[i]) == 0)
                 {
                     // Calculate TTC
-                    double r_dot = car_speed * cosines[i];
+                    double r_dot = abs_velocity * cosines[i];
                     double TTC = (scan_msg->ranges[i] - car_distances[i]) / std::max(-r_dot, 0.00);
                     
                     //ROS_INFO_STREAM("Speed: " << speed);
                     //ROS_INFO_STREAM(scan_msg->ranges[i]);
 
-                    if(TTC <= (TTC_threshold * car_speed / 8.26) && isinf(TTC) == 0 && isnan(TTC) == 0){
-                        //ROS_INFO_STREAM("TTC Limit");
+                    
+                    if(TTC <= (TTC_threshold_AEB * (abs_velocity / 8.26)) && isinf(TTC) == 0 && isnan(TTC) == 0){
+                        ROS_INFO_STREAM("Actual TTC: " << TTC);
+                        ROS_INFO_STREAM("TTC Limit: " <<  TTC_threshold_AEB * (abs_velocity / 8.26) );
                         engage_em_brake = true;
                         //ROS_INFO ("Beam " << i << ", TTC: " << TTC);
+                        
+                        // --- Engage Emergency Brake --- //
+                        // publish drive/brake message
+                        
+                        // Create bool message
+                        std_msgs::Bool brake_bool_msg;
+
+                        brake_bool_msg.data = true;
+
+                        // Send message to behaviour controller
+                        brake_bool.publish(brake_bool_msg);
+
+                        //create ackermann stamped message
+                        // initialize message to be published
+                        ackermann_msgs::AckermannDriveStamped drive_st_msg;
+                        ackermann_msgs::AckermannDrive drive_msg;
+
+                        drive_msg.speed = 0.0;
+                        //drive_msg.steering_angle = 0;
+
+                        drive_st_msg.drive = drive_msg;
+
+                        //publish
+                        brake_.publish(drive_st_msg);
+
+                        //ROS_INFO_STREAM("Emergency Brake Engaged");
+
                         break;
                     }
+                
                 }
 
+                
             }
            
         }
 
 
-        // publish drive/brake message
-        if (engage_em_brake){
-
-            // Create bool message
-            std_msgs::Bool brake_bool_msg;
-
-            brake_bool_msg.data = true;
-            // Send message to behaviour controller
-            brake_bool.publish(brake_bool_msg);
-
-            //create ackermann stamped message
-            // initialize message to be published
-            ackermann_msgs::AckermannDriveStamped drive_st_msg;
-            ackermann_msgs::AckermannDrive drive_msg;
-
-            drive_msg.speed = 0.f;
-            //drive_msg.steering_angle = 0;
-
-            drive_st_msg.drive = drive_msg;
-
-            //publish
-            brake_.publish(drive_st_msg);
-
-            ROS_INFO_STREAM("Emergency Brake Engaged");
-            
-        }
+        
 
     }
 
@@ -180,18 +189,6 @@ public:
 
     ///----- Other Functions ----///
 
-/*std::vector<double> get_cosines(int scan_beams, double angle_min, double scan_ang_incr) {
-    // Precompute distance from lidar to edge of car for each beam
-    std::vector<double> cosines = std::vector<double>();
-    cosines.reserve(scan_beams);
-
-    for (int i = 0; i < scan_beams; i++) {
-        double angle = angle_min + i * scan_ang_incr;
-        cosines[i] = std::cos(angle);
-    }
-
-    return cosines;
-}*/
 
 int main(int argc, char ** argv) {
     ros::init(argc, argv, "safety_node");

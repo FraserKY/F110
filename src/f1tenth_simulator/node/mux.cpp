@@ -221,6 +221,7 @@ public:
                 desired_velocity = prev_key_velocity;
             } else if (msg.data == " ") {
                 // publish zeros to slow down/straighten out car
+                desired_velocity = 0;
             } else {
                 // so that it doesn't constantly publish zeros when you press other keys
                 publish = false;
