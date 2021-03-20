@@ -45,6 +45,7 @@ map_free_threshold: 0.8
 
 # Time to collision cutoff value
 ttc_threshold: 0.01
+ttc_threshold_AEB: 0.2
 
 # Indices for mux controller
 mux_size: 5
@@ -82,7 +83,7 @@ nav_key_char: "n"
 new_key_char: "z"
 
 # Keyboard driving params
-keyboard_speed: .3  # meters/second
+keyboard_speed: .7 # meters/second
 keyboard_steer_ang: .3  # radians
 
 # obstacle parameters

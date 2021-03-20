@@ -30,6 +30,8 @@ private:
     std::vector<double> cosines;
     std::vector<double> car_distances;
 
+    double TTC_threshold;
+
     // TODO: create ROS subscribers and publishers
 
     // get laser scan and speed data
@@ -63,6 +65,9 @@ public:
         n.getParam("odom_topic", odom_topic);
         n.getParam("brake_drive_topic", brake_tpc);
         n.getParam("brake_bool_topic", brake_bool_tpc);
+
+        // Get TTC threshold
+        n.getParam("ttc_threshold_AEB", TTC_threshold);
 
         //Get Variables required to pre-compute cosines and distance to car
         int scan_beams;
@@ -128,7 +133,7 @@ public:
                     //ROS_INFO_STREAM("Speed: " << speed);
                     //ROS_INFO_STREAM(scan_msg->ranges[i]);
 
-                    if(TTC < 0.5 && isinf(TTC) == 0 && isnan(TTC) == 0){
+                    if(TTC < TTC_threshold && isinf(TTC) == 0 && isnan(TTC) == 0){
                         ROS_INFO_STREAM("TTC Limit");
                         engage_em_brake = true;
                         ROS_INFO_STREAM("Beam " << i << ", TTC: " << TTC);
@@ -144,9 +149,13 @@ public:
 
         // TODO: publish drive/brake message
         if (engage_em_brake){
+            ROS_INFO_STREAM("Publish statment reached");
+            // Create bool message 
+            std_msgs::Bool brake_bool_msg;
 
+            brake_bool_msg.data = true; 
             // Send message to behaviour controller
-            brake_bool.publish(true)
+            brake_bool.publish(brake_bool_msg);
 
             //create ackermann stamped message
             // initialize message to be published
