@@ -36,9 +36,9 @@ private:
     ros::Subscriber laser_scan_data;
     ros::Subscriber odom_data;
 
-    //create publishers for brake_bool and break topics
-    ros::Publisher break_bool;
-    ros::Publisher break_;
+    //create publishers for brake_bool and brake topics
+    ros::Publisher brake_bool;
+    ros::Publisher brake_;
 
 public:
     Safety() {
@@ -58,11 +58,11 @@ public:
         */
 
         // Get topic names
-        std::string laser_scan_topic, odom_topic, break_tpc, break_bool_tpc;
+        std::string laser_scan_topic, odom_topic, brake_tpc, brake_bool_tpc;
         n.getParam("scan_topic", laser_scan_topic);
         n.getParam("odom_topic", odom_topic);
-        n.getParam("break_drive_topic", break_tpc);
-        n.getParam("break_bool_topic", break_bool_tpc);
+        n.getParam("brake_drive_topic", brake_tpc);
+        n.getParam("brake_bool_topic", brake_bool_tpc);
 
         //Get Variables required to pre-compute cosines and distance to car
         int scan_beams;
@@ -90,8 +90,8 @@ public:
         odom_data = n.subscribe(odom_topic, 1, &Safety::odom_callback, this);
         ROS_INFO_STREAM("created odom_topic subscriber");
 
-        break_bool = n.advertise<std_msgs::Bool>(break_bool_tpc, 1);
-        break_ = n.advertise<ackermann_msgs::AckermannDriveStamped>(break_tpc, 1);
+        brake_bool = n.advertise<std_msgs::Bool>(brake_bool_tpc, 1);
+        brake_ = n.advertise<ackermann_msgs::AckermannDriveStamped>(brake_tpc, 1);
 
 
     }
