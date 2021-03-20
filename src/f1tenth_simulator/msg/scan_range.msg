@@ -1,3 +1,3 @@
-Float64 nearest_point
-Float64 furthest_point
+float64 nearest_point
+float64 furthest_point
 

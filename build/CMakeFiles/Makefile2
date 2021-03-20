@@ -408,18 +408,20 @@ clean: gtest/googlemock/gtest/CMakeFiles/gtest.dir/clean
 # Directory level rules for directory f1tenth_simulator
 
 # Convenience name for "all" pass in the directory.
+f1tenth_simulator/all: f1tenth_simulator/CMakeFiles/simulator.dir/all
 f1tenth_simulator/all: f1tenth_simulator/CMakeFiles/LaserScan.dir/all
 f1tenth_simulator/all: f1tenth_simulator/CMakeFiles/f1tenth_simulator.dir/all
 f1tenth_simulator/all: f1tenth_simulator/CMakeFiles/f1tenth_simulator_generate_messages.dir/all
-f1tenth_simulator/all: f1tenth_simulator/CMakeFiles/simulator.dir/all
 f1tenth_simulator/all: f1tenth_simulator/CMakeFiles/mux.dir/all
 f1tenth_simulator/all: f1tenth_simulator/CMakeFiles/behavior_controller.dir/all
 f1tenth_simulator/all: f1tenth_simulator/CMakeFiles/random_walk.dir/all
 f1tenth_simulator/all: f1tenth_simulator/CMakeFiles/keyboard.dir/all
+f1tenth_simulator/all: f1tenth_simulator/CMakeFiles/safety_node.dir/all
 
 .PHONY : f1tenth_simulator/all
 
 # Convenience name for "clean" pass in the directory.
+f1tenth_simulator/clean: f1tenth_simulator/CMakeFiles/simulator.dir/clean
 f1tenth_simulator/clean: f1tenth_simulator/CMakeFiles/f1tenth_simulator_generate_messages_nodejs.dir/clean
 f1tenth_simulator/clean: f1tenth_simulator/CMakeFiles/actionlib_generate_messages_eus.dir/clean
 f1tenth_simulator/clean: f1tenth_simulator/CMakeFiles/actionlib_msgs_generate_messages_py.dir/clean
@@ -451,7 +453,6 @@ f1tenth_simulator/clean: f1tenth_simulator/CMakeFiles/roscpp_generate_messages_n
 f1tenth_simulator/clean: f1tenth_simulator/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
 f1tenth_simulator/clean: f1tenth_simulator/CMakeFiles/f1tenth_simulator_generate_messages_cpp.dir/clean
 f1tenth_simulator/clean: f1tenth_simulator/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
-f1tenth_simulator/clean: f1tenth_simulator/CMakeFiles/simulator.dir/clean
 f1tenth_simulator/clean: f1tenth_simulator/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
 f1tenth_simulator/clean: f1tenth_simulator/CMakeFiles/f1tenth_simulator_genlisp.dir/clean
 f1tenth_simulator/clean: f1tenth_simulator/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
@@ -498,6 +499,7 @@ f1tenth_simulator/clean: f1tenth_simulator/CMakeFiles/f1tenth_simulator_geneus.d
 f1tenth_simulator/clean: f1tenth_simulator/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
 f1tenth_simulator/clean: f1tenth_simulator/CMakeFiles/f1tenth_simulator_generate_messages_lisp.dir/clean
 f1tenth_simulator/clean: f1tenth_simulator/CMakeFiles/keyboard.dir/clean
+f1tenth_simulator/clean: f1tenth_simulator/CMakeFiles/safety_node.dir/clean
 
 .PHONY : f1tenth_simulator/clean
 
@@ -505,6 +507,44 @@ f1tenth_simulator/clean: f1tenth_simulator/CMakeFiles/keyboard.dir/clean
 f1tenth_simulator/preinstall:
 
 .PHONY : f1tenth_simulator/preinstall
+
+#=============================================================================
+# Target rules for target f1tenth_simulator/CMakeFiles/simulator.dir
+
+# All Build rule for target.
+f1tenth_simulator/CMakeFiles/simulator.dir/all: f1tenth_simulator/CMakeFiles/f1tenth_simulator.dir/all
+f1tenth_simulator/CMakeFiles/simulator.dir/all: f1tenth_simulator/CMakeFiles/f1tenth_simulator_generate_messages_cpp.dir/all
+	$(MAKE) -f f1tenth_simulator/CMakeFiles/simulator.dir/build.make f1tenth_simulator/CMakeFiles/simulator.dir/depend
+	$(MAKE) -f f1tenth_simulator/CMakeFiles/simulator.dir/build.make f1tenth_simulator/CMakeFiles/simulator.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fraser/catkin_ws/build/CMakeFiles --progress-num=31,32 "Built target simulator"
+.PHONY : f1tenth_simulator/CMakeFiles/simulator.dir/all
+
+# Include target in all.
+all: f1tenth_simulator/CMakeFiles/simulator.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+f1tenth_simulator/CMakeFiles/simulator.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fraser/catkin_ws/build/CMakeFiles 8
+	$(MAKE) -f CMakeFiles/Makefile2 f1tenth_simulator/CMakeFiles/simulator.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fraser/catkin_ws/build/CMakeFiles 0
+.PHONY : f1tenth_simulator/CMakeFiles/simulator.dir/rule
+
+# Convenience name for target.
+simulator: f1tenth_simulator/CMakeFiles/simulator.dir/rule
+
+.PHONY : simulator
+
+# clean rule for target.
+f1tenth_simulator/CMakeFiles/simulator.dir/clean:
+	$(MAKE) -f f1tenth_simulator/CMakeFiles/simulator.dir/build.make f1tenth_simulator/CMakeFiles/simulator.dir/clean
+.PHONY : f1tenth_simulator/CMakeFiles/simulator.dir/clean
+
+# clean rule for target.
+clean: f1tenth_simulator/CMakeFiles/simulator.dir/clean
+
+.PHONY : clean
 
 #=============================================================================
 # Target rules for target f1tenth_simulator/CMakeFiles/f1tenth_simulator_generate_messages_nodejs.dir
@@ -1519,44 +1559,6 @@ f1tenth_simulator/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean:
 
 # clean rule for target.
 clean: f1tenth_simulator/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target f1tenth_simulator/CMakeFiles/simulator.dir
-
-# All Build rule for target.
-f1tenth_simulator/CMakeFiles/simulator.dir/all: f1tenth_simulator/CMakeFiles/f1tenth_simulator.dir/all
-f1tenth_simulator/CMakeFiles/simulator.dir/all: f1tenth_simulator/CMakeFiles/f1tenth_simulator_generate_messages_cpp.dir/all
-	$(MAKE) -f f1tenth_simulator/CMakeFiles/simulator.dir/build.make f1tenth_simulator/CMakeFiles/simulator.dir/depend
-	$(MAKE) -f f1tenth_simulator/CMakeFiles/simulator.dir/build.make f1tenth_simulator/CMakeFiles/simulator.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fraser/catkin_ws/build/CMakeFiles --progress-num=29,30 "Built target simulator"
-.PHONY : f1tenth_simulator/CMakeFiles/simulator.dir/all
-
-# Include target in all.
-all: f1tenth_simulator/CMakeFiles/simulator.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-f1tenth_simulator/CMakeFiles/simulator.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fraser/catkin_ws/build/CMakeFiles 8
-	$(MAKE) -f CMakeFiles/Makefile2 f1tenth_simulator/CMakeFiles/simulator.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fraser/catkin_ws/build/CMakeFiles 0
-.PHONY : f1tenth_simulator/CMakeFiles/simulator.dir/rule
-
-# Convenience name for target.
-simulator: f1tenth_simulator/CMakeFiles/simulator.dir/rule
-
-.PHONY : simulator
-
-# clean rule for target.
-f1tenth_simulator/CMakeFiles/simulator.dir/clean:
-	$(MAKE) -f f1tenth_simulator/CMakeFiles/simulator.dir/build.make f1tenth_simulator/CMakeFiles/simulator.dir/clean
-.PHONY : f1tenth_simulator/CMakeFiles/simulator.dir/clean
-
-# clean rule for target.
-clean: f1tenth_simulator/CMakeFiles/simulator.dir/clean
 
 .PHONY : clean
 
@@ -3059,6 +3061,44 @@ f1tenth_simulator/CMakeFiles/keyboard.dir/clean:
 
 # clean rule for target.
 clean: f1tenth_simulator/CMakeFiles/keyboard.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target f1tenth_simulator/CMakeFiles/safety_node.dir
+
+# All Build rule for target.
+f1tenth_simulator/CMakeFiles/safety_node.dir/all: f1tenth_simulator/CMakeFiles/f1tenth_simulator.dir/all
+f1tenth_simulator/CMakeFiles/safety_node.dir/all: f1tenth_simulator/CMakeFiles/f1tenth_simulator_generate_messages_cpp.dir/all
+	$(MAKE) -f f1tenth_simulator/CMakeFiles/safety_node.dir/build.make f1tenth_simulator/CMakeFiles/safety_node.dir/depend
+	$(MAKE) -f f1tenth_simulator/CMakeFiles/safety_node.dir/build.make f1tenth_simulator/CMakeFiles/safety_node.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fraser/catkin_ws/build/CMakeFiles --progress-num=29,30 "Built target safety_node"
+.PHONY : f1tenth_simulator/CMakeFiles/safety_node.dir/all
+
+# Include target in all.
+all: f1tenth_simulator/CMakeFiles/safety_node.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+f1tenth_simulator/CMakeFiles/safety_node.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fraser/catkin_ws/build/CMakeFiles 8
+	$(MAKE) -f CMakeFiles/Makefile2 f1tenth_simulator/CMakeFiles/safety_node.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fraser/catkin_ws/build/CMakeFiles 0
+.PHONY : f1tenth_simulator/CMakeFiles/safety_node.dir/rule
+
+# Convenience name for target.
+safety_node: f1tenth_simulator/CMakeFiles/safety_node.dir/rule
+
+.PHONY : safety_node
+
+# clean rule for target.
+f1tenth_simulator/CMakeFiles/safety_node.dir/clean:
+	$(MAKE) -f f1tenth_simulator/CMakeFiles/safety_node.dir/build.make f1tenth_simulator/CMakeFiles/safety_node.dir/clean
+.PHONY : f1tenth_simulator/CMakeFiles/safety_node.dir/clean
+
+# clean rule for target.
+clean: f1tenth_simulator/CMakeFiles/safety_node.dir/clean
 
 .PHONY : clean
 
