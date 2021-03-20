@@ -137,7 +137,7 @@ public:
                         ROS_INFO_STREAM("TTC Limit");
                         engage_em_brake = true;
                         ROS_INFO_STREAM("Beam " << i << ", TTC: " << TTC);
-                        //break;
+                        break;
                     }
                 }
 
