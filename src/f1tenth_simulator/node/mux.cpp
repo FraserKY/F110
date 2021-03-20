@@ -207,10 +207,10 @@ public:
 
             if (msg.data == "w") {
                 // Forward
-                desired_velocity = keyboard_speed; // a good speed for keyboard control
+                desired_velocity = prev_key_velocity + keyboard_speed; // a good speed for keyboard control
             } else if (msg.data == "s") {
                 // Backwards
-                desired_velocity = -keyboard_speed;
+                desired_velocity = prev_key_velocity - keyboard_speed;
             } else if (msg.data == "a") {
                 // Steer left and keep speed
                 desired_steer = keyboard_steer_ang;

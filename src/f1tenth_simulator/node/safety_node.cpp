@@ -113,7 +113,7 @@ public:
 
         //  TODO: Create a function that checks for collision
         //Set a threshold for speed above which AEB is activated
-        if(car_speed > 0.08)
+        if(car_speed != 0.0)
         {
             // Loop through array of distance values from LIDAR and calc the TTC
             for (int i = 0; i <= 1080; i ++)   //scan_beams
@@ -124,8 +124,6 @@ public:
                     // Calculate TTC
                     double r_dot = car_speed * cosines[i];
                     double TTC = (scan_msg->ranges[i] - car_distances[i]) / std::max(-r_dot, 0.00);
-
-                
                     
                     //ROS_INFO_STREAM("Speed: " << speed);
                     //ROS_INFO_STREAM(scan_msg->ranges[i]);
