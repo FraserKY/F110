@@ -24,7 +24,7 @@ class Safety {
 // The class that handles emergency braking
 private:
     ros::NodeHandle n;
-    double speed;
+    float speed;
     // TODO: create ROS subscribers and publishers
 
     // get laser scan and speed data
@@ -38,7 +38,7 @@ private:
 public:
     Safety() {
         n = ros::NodeHandle("~");
-        speed = 0.0;
+        car_speed = 0.0;
         /*
         One publisher should publish to the /brake topic with an
         ackermann_msgs/AckermannDriveStamped brake message.
@@ -77,28 +77,35 @@ public:
     }
     void odom_callback(const nav_msgs::Odometry::ConstPtr &odom_msg) {
         // TODO: update current speed
-        speed = odom_msg->twist.twist.linear.x;
+        car_speed = odom_msg->twist.twist.linear.x;
         ///ROS_INFO_STREAM("Speed:" << speed);
     }
 
     void scan_callback(const sensor_msgs::LaserScan::ConstPtr &scan_msg) {
-        // TODO: calculate TTC
+        // TODO: calculate TTC (Time to Collision)
         // Need to calculate TTC for each beam in a laser scan message
-        double TTC;
+        float TTC;
         bool engage_em_brake = 0;
         
-        int length = sizeof(scan_msg->ranges);
-        
-        for (int i = 0; i <= length; i ++)
-        {
-            if(speed > 0.08){
-                
-                if(isinf(scan_msg->ranges[i]) == 0 && isnan(scan_msg->ranges[i]) == 0)
-                    {
-                    // ROS_INFO_STREAM(scan_msg->angle_min);
-                    //Calculate TTC
+        int length;
 
-                    double r_dot = speed * cos(scan_msg->angle_min + (scan_msg->angle_increment * i));
+        ROS_INFO_STREAM("Number of values in LS ranges Array is: " << length);
+
+        //Set a threshold for speed above which AEB is activated
+        if(car_speed > 0.08)
+        {
+            length = sizeof(scan_msg->ranges);
+
+            // Loop through array of distance values from LIDAR and calc the TTC
+            for (int i = 0; i <= length; i ++)
+            {
+                // Do not process any values which are INF or NaN
+                if(isinf(scan_msg->ranges[i]) == 0 && isnan(scan_msg->ranges[i]) == 0)
+                {
+                    // ROS_INFO_STREAM(scan_msg->angle_min);
+                    // Calculate TTC
+
+                    float r_dot = car_speed * cos(scan_msg->angle_min + (scan_msg->angle_increment * i));
                     
                     //ROS_INFO_STREAM(scan_msg->angle_increment);
                     //ROS_INFO_STREAM(scan_msg->angle_min + (scan_msg->angle_increment * i));
@@ -115,8 +122,7 @@ public:
                         engage_em_brake = true;
                         break;
                     }
-            }
-            
+                }
 
             }
            
@@ -125,8 +131,8 @@ public:
 
 
         // TODO: publish drive/brake message
-        if (engage_em_brake == true){
-            //create ackermman stamped message
+        if (engage_em_brake){
+            //create ackermann stamped message
 
 
             //publish
