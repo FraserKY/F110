@@ -110,11 +110,13 @@ public:
 
         ROS_INFO_STREAM("Number of values in LS ranges Array is: " << length);
 
+
+        //  TODO: Create a function that checks for collision
         //Set a threshold for speed above which AEB is activated
         if(car_speed > 0.08)
         {
             // Loop through array of distance values from LIDAR and calc the TTC
-            for (int i = 0; i <= scan_beams; i ++)
+            for (int i = 0; i <= 1080; i ++)   //scan_beams
             {
                 // Do not process any values which are INF or NaN
                 if(isinf(scan_msg->ranges[i]) == 0 && isnan(scan_msg->ranges[i]) == 0)
