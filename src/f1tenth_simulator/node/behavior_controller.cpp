@@ -146,7 +146,7 @@ public:
         }
 
         // Start with ebrake off
-        safety_on = false;
+        safety_on = true;
 
         // Initialize state
         state = {.x=0.0, .y=0.0, .theta=0.0, .velocity=0.0, .steer_angle=0.0, .angular_velocity=0.0, .slip_angle=0.0, .st_dyn=false};
