@@ -26,6 +26,10 @@ class Safety {
 private:
     ros::NodeHandle n;
     float car_speed;
+
+    std::vector<double> cosines;
+    std::vector<double> car_distances;
+
     // TODO: create ROS subscribers and publishers
 
     // get laser scan and speed data
@@ -71,8 +75,6 @@ public:
         n.getParam("scan_field_of_view", scan_fov);
         scan_ang_incr = scan_fov / scan_beams;
 
-        std::vector<double> cosines;
-        std::vector<double> car_distances;
 
         // Precompute cosine and distance to car at each angle of the laser scan
         cosines = racecar_simulator::Precompute::get_cosines(scan_beams, -scan_fov/2.0, scan_ang_incr);
