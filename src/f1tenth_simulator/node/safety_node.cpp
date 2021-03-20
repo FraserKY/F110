@@ -123,17 +123,18 @@ public:
                 {
                     // Calculate TTC
                     double r_dot = car_speed * cosines[i];
-                    double TTC = (scan_msg->ranges[i] - car_distances[i]) / -r_dot;// std::max(-r_dot, 0.00);
+                    double TTC = (scan_msg->ranges[i] - car_distances[i]) / std::max(-r_dot, 0.00);
 
                 
-                    ROS_INFO_STREAM("Beam" << i << "TTC: " << TTC);
+                    
                     //ROS_INFO_STREAM("Speed: " << speed);
                     //ROS_INFO_STREAM(scan_msg->ranges[i]);
 
-                    if(TTC < 2){
+                    if(TTC < 0.5 && isinf(TTC) == 0 && isnan(TTC) == 0){
                         ROS_INFO_STREAM("TTC Limit");
                         engage_em_brake = true;
-                        break;
+                        ROS_INFO_STREAM("Beam " << i << ", TTC: " << TTC);
+                        //break;
                     }
                 }
 
