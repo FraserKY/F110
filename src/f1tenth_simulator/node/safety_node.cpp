@@ -137,7 +137,7 @@ public:
                     //ROS_INFO_STREAM(scan_msg->ranges[i]);
 
                     double TTC_thres_forward = (TTC_threshold_AEB * (abs_velocity / 8.26));
-                    double TTC_thres_side = (1.2 * (abs_velocity / 8.26));
+                    double TTC_thres_side = (1.2 * (abs_velocity / 8.26));//
 
                     //if (i == 500) {
                         ROS_INFO_STREAM(
