@@ -44,8 +44,8 @@ scan_std_dev: 0.01 # meters
 map_free_threshold: 0.8
 
 # Time to collision cutoff value
-ttc_threshold: 0.01
-ttc_threshold_AEB: 2.5
+ttc_threshold: 0.01 # Sim Value for Collision
+ttc_threshold_AEB: 2.0 # Value for Automatic Emergency Braking node
 
 # Indices for mux controller
 mux_size: 5
