@@ -134,15 +134,17 @@ public:
                     double r_dot = abs_velocity * cosines[i];
                     double TTC = (scan_msg->ranges[i] - car_distances[i]) / std::max(-r_dot, 0.00);
                     
-                    //ROS_INFO_STREAM("Speed: " << speed);
+
                     //ROS_INFO_STREAM(scan_msg->ranges[i]);
 
                     double TTC_thres_forward = (TTC_threshold_AEB * (abs_velocity / 8.26));
                     double TTC_thres_side = (1.2 * (abs_velocity / 8.26));
-                    
-                    if(TTC <= TTC_thres_forward &&  i <= 700 && i >= 300){
+
+                    ROS_INFO_STREAM("Actual TTC: " << TTC << " TTC Limit: "  << TTC_thres_forward  "  Beam number " << i);
+
+                    if(TTC <= TTC_thres_forward && i <= 700 && i >= 300){
                         ROS_INFO_STREAM("Actual TTC: " << TTC << "  Beam number " << i);
-                        ROS_INFO_STREAM("TTC Limit: " <<  TTC_threshold_AEB * (abs_velocity / 8.26) );
+                        ROS_INFO_STREAM("TTC Limit: " <<  TTC_thres_forward );
                         engage_em_brake = true;
                         //ROS_INFO_STREAM ();
                         
