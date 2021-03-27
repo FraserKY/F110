@@ -88,7 +88,7 @@ public:
 
         // create ROS subscribers and publishers
         //subscribe to laser_scan topic
-        laser_scan_data = n.subscribe(laser_scan_topic, 100, &Safety::scan_callback, this);
+        laser_scan_data = n.subscribe(laser_scan_topic, 10, &Safety::scan_callback, this);
         ROS_INFO_STREAM("created laser_scan subscriber");
 
         //subscribe to odom topic
@@ -149,7 +149,7 @@ public:
                                 "Actual TTC: " << TTC << " TTC Limit: " << TTC_thres_forward << "  Beam number " << i);
                    }
 
-                    if(not_nan_or_inf(TTC) && TTC <= TTC_thres_forward && i <= 700 && i >= 300){
+                    if(not_nan_or_inf(TTC) && TTC <= TTC_thres_forward}// && i <= 700 && i >= 300){
                         ROS_INFO_STREAM("Actual TTC: " << TTC << "  Beam number " << i);
                         ROS_INFO_STREAM("TTC Limit: " <<  TTC_thres_forward );
                         engage_em_brake = true;
