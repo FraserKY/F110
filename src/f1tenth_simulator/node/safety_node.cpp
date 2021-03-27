@@ -139,10 +139,10 @@ public:
 
                     
                     if(TTC <= (TTC_threshold_AEB * (abs_velocity / 8.26)) && isinf(TTC) == 0 && isnan(TTC) == 0){
-                        ROS_INFO_STREAM("Actual TTC: " << TTC);
+                        ROS_INFO_STREAM("Actual TTC: " << TTC << "Beam number" << i);
                         ROS_INFO_STREAM("TTC Limit: " <<  TTC_threshold_AEB * (abs_velocity / 8.26) );
                         engage_em_brake = true;
-                        ROS_INFO_STREAM ("Beam number" << i);
+                        //ROS_INFO_STREAM ();
                         
                         // --- Engage Emergency Brake --- //
                         // publish drive/brake message
