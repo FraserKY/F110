@@ -128,7 +128,7 @@ public:
             for (int i = 0; i <= 1080; i ++)   //scan_beams
             {
                 // Do not process any values which are INF or NaN
-                if(not_nan_or_inf(scan_msg->ranges[i]))
+                if(not_nan_or_inf(scan_msg->ranges[i]) && abs_velocity > 0.0)
                 {
                     // Calculate TTC
                     double r_dot = abs_velocity * cosines[i];
@@ -148,7 +148,7 @@ public:
                         engage_em_brake = true;
                         //ROS_INFO_STREAM ();
                         
-                        // --- Engage Emergency Brake --- //
+                        /// --- Engage Emergency Brake --- ///
                         // publish drive/brake message
                         
                         // Create bool message
