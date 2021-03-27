@@ -140,7 +140,10 @@ public:
                     double TTC_thres_forward = (TTC_threshold_AEB * (abs_velocity / 8.26));
                     double TTC_thres_side = (1.2 * (abs_velocity / 8.26));
 
-                    ROS_INFO_STREAM("Actual TTC: " << TTC << " TTC Limit: "  << TTC_thres_forward << "  Beam number " << i);
+                    if (i == 500) {
+                        ROS_INFO_STREAM(
+                                "Actual TTC: " << TTC << " TTC Limit: " << TTC_thres_forward << "  Beam number " << i);
+                    }
 
                     if(TTC <= TTC_thres_forward && i <= 700 && i >= 300){
                         ROS_INFO_STREAM("Actual TTC: " << TTC << "  Beam number " << i);
