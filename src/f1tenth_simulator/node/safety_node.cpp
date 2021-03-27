@@ -149,7 +149,7 @@ public:
                                 "Actual TTC: " << TTC << " TTC Limit: " << TTC_thres_forward << "  Beam number " << i);
                     }*/
 
-                    if(TTC <= TTC_thres_forward) { //&& i <= 700 && i >= 300){
+                    if(not_nan_or_inf(TTC) && <= TTC_thres_forward) { //&& i <= 700 && i >= 300){
                         ROS_INFO_STREAM("Actual TTC: " << TTC << "  Beam number " << i);
                         ROS_INFO_STREAM("TTC Limit: " <<  TTC_thres_forward );
                         engage_em_brake = true;
