@@ -132,7 +132,7 @@ public:
                 {
                     // Calculate TTC
                     double r_dot = abs_velocity * cosines[i];
-                    double TTC = (scan_msg->ranges[i] - car_distances[i]) / r_dot;//std::max(-r_dot, 0.0);
+                    double TTC = (scan_msg->ranges[i] - car_distances[i]) / std::max(-r_dot, 0.0);
 
                     //ROS_INFO_STREAM(scan_msg->ranges[i]);
 
@@ -148,7 +148,7 @@ public:
                                 "Actual TTC: " << TTC << " TTC Limit: " << TTC_thres_forward << "  Beam number " << i);
                     //}
 
-                    if(not_nan_or_inf(TTC) && TTC <= TTC_thres_forward && i <= 700 && i >= 300){
+                    if(not_nan_or_inf(TTC) && TTC <= TTC_thres_forward){ // && i <= 700 && i >= 300){
                         ROS_INFO_STREAM("Actual TTC: " << TTC << "  Beam number " << i);
                         ROS_INFO_STREAM("TTC Limit: " <<  TTC_thres_forward );
                         engage_em_brake = true;
