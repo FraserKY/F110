@@ -119,6 +119,7 @@ public:
         //  TODO: Create a function that checks for collision
         //Set a threshold for speed above which AEB is activated
         double abs_velocity = std::abs(car_speed);
+        bool engage_em_brake = 0;
 
         if(abs_velocity > 0.0)
         {
