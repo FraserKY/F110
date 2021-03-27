@@ -185,23 +185,24 @@ public:
 
     }
 
+    ///----- Other Functions ----///
+
+    bool not_nan_or_inf(double value){
+        // Function determines whether the value is a inf or Nan
+        // returns true if they're not
+
+        if (isinf(value) == 0 && isnan(value) == 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
 };
 
 
-    ///----- Other Functions ----///
 
-bool not_nan_or_inf(double value){
-    // Function determines whether the value is a inf or Nan
-    // returns true if they're not
-
-    if (isinf(value) == 0 && isnan(value) == 0){
-        return true;
-    }
-    else{
-        return false;
-    }
-
-}
 
 
 int main(int argc, char ** argv) {
