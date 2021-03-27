@@ -86,7 +86,7 @@ public:
         car_distances = racecar_simulator::Precompute::get_car_distances(scan_beams, wheelbase, width,
                                                       scan_distance_to_base_link, -scan_fov/2.0, scan_ang_incr);
 
-        // TODO: create ROS subscribers and publishers
+        // create ROS subscribers and publishers
         //subscribe to laser_scan topic
         laser_scan_data = n.subscribe(laser_scan_topic, 100, &Safety::scan_callback, this);
         ROS_INFO_STREAM("created laser_scan subscriber");
@@ -101,7 +101,7 @@ public:
 
     }
     void odom_callback(const nav_msgs::Odometry::ConstPtr &odom_msg) {
-        // TODO: update current speed
+        // update current speed
         car_speed = odom_msg->twist.twist.linear.x;
         //ROS_INFO_STREAM("Speed:" << car_speed);
     }

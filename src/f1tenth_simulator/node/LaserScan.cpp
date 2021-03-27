@@ -68,7 +68,7 @@ public:
 
 			} else if(msg.ranges[i] < closest  && msg.ranges[i] >= msg.range_min) {
 
-				closest = msg.ranges[i];	
+				closest = msg.ranges[i];
 			}
 
 		} 
