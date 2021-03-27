@@ -141,7 +141,7 @@ public:
                         ROS_INFO_STREAM("Actual TTC: " << TTC);
                         ROS_INFO_STREAM("TTC Limit: " <<  TTC_threshold_AEB * (abs_velocity / 8.26) );
                         engage_em_brake = true;
-                        ROS_INFO ("Beam number" << i);
+                        ROS_INFO_STREAM ("Beam number" << i);
                         
                         // --- Engage Emergency Brake --- //
                         // publish drive/brake message
