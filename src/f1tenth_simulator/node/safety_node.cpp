@@ -141,7 +141,7 @@ public:
                     double TTC_thres_side = (1.2 * (abs_velocity / 8.26));
                     
                     if(TTC <= TTC_thres_forward && (700 < i < 300){
-                        ROS_INFO_STREAM("Actual TTC: " << TTC << "  Beam number" << i);
+                        ROS_INFO_STREAM("Actual TTC: " << TTC << "  Beam number " << i);
                         ROS_INFO_STREAM("TTC Limit: " <<  TTC_threshold_AEB * (abs_velocity / 8.26) );
                         engage_em_brake = true;
                         //ROS_INFO_STREAM ();
