@@ -128,7 +128,7 @@ public:
             for (int i = 0; i <= 1080; i ++)   //scan_beams
             {
                 // Do not process any values which are INF or NaN
-                if(isinf(scan_msg->ranges[i]) == 0 && isnan(scan_msg->ranges[i]) == 0)
+                if(not_nan_or_inf(scan_msg->ranges[i]))
                 {
                     // Calculate TTC
                     double r_dot = abs_velocity * cosines[i];
@@ -139,7 +139,7 @@ public:
 
                     
                     if(TTC <= (TTC_threshold_AEB * (abs_velocity / 8.26)) && isinf(TTC) == 0 && isnan(TTC) == 0){
-                        ROS_INFO_STREAM("Actual TTC: " << TTC << "Beam number" << i);
+                        ROS_INFO_STREAM("Actual TTC: " << TTC << "  Beam number" << i);
                         ROS_INFO_STREAM("TTC Limit: " <<  TTC_threshold_AEB * (abs_velocity / 8.26) );
                         engage_em_brake = true;
                         //ROS_INFO_STREAM ();
@@ -189,6 +189,19 @@ public:
 
 
     ///----- Other Functions ----///
+
+bool not_nan_or_inf(double value){
+    // Function determines whether the value is a inf or Nan
+    // returns true if they're not
+
+    if (isinf(value) == 0 && isnan(value) == 0){
+        return true;
+    }
+    else{
+        return false;
+    }
+
+}
 
 
 int main(int argc, char ** argv) {
