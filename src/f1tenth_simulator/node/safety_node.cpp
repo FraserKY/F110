@@ -141,7 +141,7 @@ public:
                     double TTC_thres_forward = (TTC_threshold_AEB * (abs_velocity / 8.26));
                     double TTC_thres_side = (1.2 * (abs_velocity / 8.26));
 
-                    if (i == 500) {
+                   if (i == 500 || i == 190) {
                         ROS_INFO_STREAM(
                                 "R: " << (scan_msg->ranges[i] - car_distances[i]) << " R dot: " << r_dot << " max_Rdot " << std::max(-r_dot, 0.00));
 
