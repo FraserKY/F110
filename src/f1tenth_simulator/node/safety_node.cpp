@@ -132,7 +132,7 @@ public:
                 {
                     // Calculate TTC
                     double r_dot = abs_velocity * cosines[i];
-                    double TTC = (scan_msg->ranges[i] - car_distances[i]) / std::max(-r_dot, 0.00);
+                    double TTC = (scan_msg->ranges[i] - car_distances[i]) / std::max(-r_dot, 0.0);
 
 
 
