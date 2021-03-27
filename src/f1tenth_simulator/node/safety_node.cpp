@@ -88,7 +88,7 @@ public:
 
         // create ROS subscribers and publishers
         //subscribe to laser_scan topic
-        laser_scan_data = n.subscribe(laser_scan_topic, 10, &Safety::scan_callback, this);
+        laser_scan_data = n.subscribe(laser_scan_topic, 100, &Safety::scan_callback, this);
         ROS_INFO_STREAM("created laser_scan subscriber");
 
         //subscribe to odom topic
@@ -132,7 +132,7 @@ public:
                 {
                     // Calculate TTC
                     double r_dot = abs_velocity * cosines[i];
-                    double TTC = (scan_msg->ranges[i] - car_distances[i]) / std::max(-r_dot, 0.0);
+                    double TTC = (scan_msg->ranges[i] - car_distances[i]) / r_dot;//std::max(-r_dot, 0.0);
 
                     //ROS_INFO_STREAM(scan_msg->ranges[i]);
 
