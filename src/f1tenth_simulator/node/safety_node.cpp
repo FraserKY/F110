@@ -107,9 +107,9 @@ public:
     }
 
     void scan_callback(const sensor_msgs::LaserScan::ConstPtr &scan_msg) {
-        // TODO: calculate TTC (Time to Collision)
+        // calculate TTC (Time to Collision)
         // Need to calculate TTC for each beam in a laser scan message
-        bool engage_em_brake = 0;
+        //bool engage_em_brake = 0;
         
         //int length;
 
@@ -141,7 +141,7 @@ public:
                         ROS_INFO_STREAM("Actual TTC: " << TTC);
                         ROS_INFO_STREAM("TTC Limit: " <<  TTC_threshold_AEB * (abs_velocity / 8.26) );
                         engage_em_brake = true;
-                        //ROS_INFO ("Beam " << i << ", TTC: " << TTC);
+                        ROS_INFO ("Beam number" << i);
                         
                         // --- Engage Emergency Brake --- //
                         // publish drive/brake message
