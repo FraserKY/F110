@@ -9,7 +9,6 @@
 
 #include <nav_msgs/Odometry.h>
 #include <sensor_msgs/LaserScan.h>
-
 #include <ackermann_msgs/AckermannDriveStamped.h>
 #include <std_msgs/Bool.h>
 
@@ -92,7 +91,7 @@ public:
         ROS_INFO_STREAM("created laser_scan subscriber");
 
         //subscribe to odom topic
-        odom_data = n.subscribe(odom_topic, 1, &Safety::odom_callback, this);
+        odom_data = n.subscribe(odom_topic, 100, &Safety::odom_callback, this);
         ROS_INFO_STREAM("created odom_topic subscriber");
 
         brake_bool = n.advertise<std_msgs::Bool>(brake_bool_tpc, 1);
