@@ -163,7 +163,7 @@ public:
         ackermann_msgs::AckermannDrive drive_msg;
 
         drive_msg.speed = speed;
-        drive_msg.steering_angle = steering_angle;
+        drive_msg.steering_angle = -1 * steering_angle;
 
         //ROS_INFO_STREAM("Speed: " << speed << " Steer Angle: " << steering_angle);
 
