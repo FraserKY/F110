@@ -36,7 +36,6 @@ public:
         DriveMessage = n.advertise<ackermann_msgs::AckermannDriveStamped>("/nav", 1)
 
         // Define any const variables
-
         const int Angle_A = 60;
         const double Angle_A_Rad = Angle_A * (M_PI / 180);
 
@@ -121,11 +120,23 @@ public:
 
     }
 
-    double car_speed(double *steering_angle){
+    double car_speed(double &steering_angle){
+
+        steering_angle = std::abs(steering_anlge);
+
+        if(steering_angle < 10 && steering_angle >= 0){
+            return 1.5;
+        }
+        else if(steering_angle < 20 && steering_angle >= 10){
+            return 1.0;
+        }
+        else {
+            return 0.5;
+        }
 
     }
 
-    void publish_command(double *speed, double *steering_angle){
+    void publish_command(double &speed, double &steering_angle){
 
     }
 
