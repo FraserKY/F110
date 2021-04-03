@@ -69,9 +69,6 @@ public:
         double B = scan_msg->ranges[700];
         double A = scan_msg->ranges[((60 * (M_PI / 180)) / scan_msg->angle_increment) + 700];
 
-        /// Debug ///
-        ROS_INFO_STREAM("Beam 700: " << scan_msg->ranges[700] << " Beam 540: " << scan_msg->ranges[540]);
-
 
         // Calculate Alpha (Alpha), the angle between exactly east of the car, and the shortest distance to the wall
 
@@ -93,6 +90,9 @@ public:
 
         double Error = SetPoint - Dt_1;
 
+
+        /// Debug ///
+        ROS_INFO_STREAM("Beam 700: " << scan_msg->ranges[700] << " Beam @ 60 to X Axis: " << scan_msg->ranges[((60 * (M_PI / 180)) / scan_msg->angle_increment) + 700] << " Dt: " << Dt);
 
 
         // Set first prev_time
