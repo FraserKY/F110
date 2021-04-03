@@ -175,6 +175,14 @@ public:
 int main(int argc, char ** argv) {
     ros::init(argc, argv, "Wall_Follower_Node");
     Wall_Follower wf;
-    ros::spin();
+    //ros::spin();
+
+    ros::Rate loopRate(30);
+
+    while (ros::ok()) {
+        loopRate.sleep();
+        ros::spinOnce();
+    }
+
     return 0;
 }
