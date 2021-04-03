@@ -106,7 +106,7 @@ public:
         double U_t =  PID_Calc(Error);
 
         /// Debug ///
-        ROS_INFO_STREAM("Dt: " << Dt_1 << " Error: " << Error << " Control Eff: " << U_t);
+        //ROS_INFO_STREAM("Dt: " << Dt_1 << " Error: " << Error << " Control Eff: " << U_t);
         //ROS_INFO_STREAM("Control Effort: " << U_t);
 
         // Call Speed Command
@@ -183,7 +183,7 @@ int main(int argc, char ** argv) {
     Wall_Follower wf;
     //ros::spin();
 
-    ros::Rate loopRate(50);
+    ros::Rate loopRate(10);
 
     while (ros::ok()) {
         loopRate.sleep();
