@@ -88,7 +88,7 @@ public:
 
         double Error = SetPoint - Dt_1;
 
-        ROS_INFO_STREAM("Dt: " << Dt_t " Error: " << Error);
+        ROS_INFO_STREAM("Dt: " << Dt_t << " Error: " << Error);
 
         // Set first prev_time
         if(Once){
