@@ -7,8 +7,9 @@
 
 // Other Libraries
 #include <math.h>
+#include <ros/console.h>
 
-class Wall_Follower{
+class Wall_Follower {
 private:
     ros::NodeHandle n;
 
@@ -26,7 +27,7 @@ private:
     //
 
 public:
-    Wall_Follower(){
+    Wall_Follower() {
         // Start Node
         n = ros::NodeHandle("~");
 
@@ -159,7 +160,7 @@ public:
 
 
 int main(int argc, char ** argv) {
-    ros::init(argc, argv, "wall_follower");
+    ros::init(argc, argv, "Wall_Follower_Node");
     Wall_Follower wf;
     ros::spin();
     return 0;
