@@ -55,9 +55,9 @@ public:
 
     }
 
-    // TODO: Create callback function for Laser Scan info
+    // Create callback function for Laser Scan info
 
-    LS_callback(const sensor_msgs::LaserScan::ConstPtr &scan_msg){
+    void LS_callback(const sensor_msgs::LaserScan::ConstPtr &scan_msg){
 
         // Obtain LS distance at exactly East of Car (B), and 60 degrees anticlockwise of this point (A)
         // Work out at which index 0 and 60 degrees lies
@@ -137,6 +137,19 @@ public:
     }
 
     void publish_command(double &speed, double &steering_angle){
+
+        // Construct Message to Send
+
+        ackermann_msgs::AckermannDriveStamped drive_st_msg;
+        ackermann_msgs::AckermannDrive drive_msg;
+
+        drive_msg.speed = speed;
+        drive_msg.steering_angle = steering_angle;
+
+        drive_st_msg.drive = drive_msg;
+
+        //publish
+        DriveMessage.publish(drive_st_msg);
 
     }
 

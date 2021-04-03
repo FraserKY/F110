@@ -31,7 +31,7 @@ private:
 
     double TTC_threshold_AEB;
 
-    // TODO: create ROS subscribers and publishers
+    // create ROS subscribers and publishers
 
     // get laser scan and speed data
     ros::Subscriber laser_scan_data;
