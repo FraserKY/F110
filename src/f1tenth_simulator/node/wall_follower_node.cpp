@@ -22,7 +22,7 @@ private:
     const double Angle_A = 60;
     const double Angle_A_Rad = Angle_A * (M_PI / 180);
 
-    const double Kp = 1;
+    const double Kp = 10;
     const double Ki = 0.0;
     const double Kd = 0.0;
 
@@ -158,7 +158,7 @@ public:
         drive_msg.speed = speed;
         drive_msg.steering_angle = steering_angle;
 
-        ROS_INFO_STREAM("Speed: " << speed << "Steer Angle" << steering_angle);
+        ROS_INFO_STREAM("Speed: " << speed << " Steer Angle: " << steering_angle);
 
         drive_st_msg.drive = drive_msg;
 
