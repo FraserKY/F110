@@ -83,9 +83,9 @@ public:
         // TODO: Calculate distance at next time step based on speed
 
         // Current Speed * Time Step
-        double L =  0.5 * 1 ;
+        double L =  1 * 1 ;
 
-        double Dt_1 = Dt; // + L * sin(alpha);
+        double Dt_1 = Dt + L * sin(alpha);
 
         // Calculate Error, Set Point (SetPoint) - Dt_1
 
