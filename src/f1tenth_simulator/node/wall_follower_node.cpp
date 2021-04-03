@@ -165,7 +165,7 @@ public:
         drive_msg.speed = speed;
         drive_msg.steering_angle = steering_angle;
 
-        //ROS_INFO_STREAM("Speed: " << speed << " Steer Angle: " << steering_angle);
+        ROS_INFO_STREAM(" Steer Angle: " << steering_angle);
 
         drive_st_msg.drive = drive_msg;
 
