@@ -33,7 +33,7 @@ private:
     bool Once = true;
 
     // Distance from wall setpoint
-    const double SetPoint = 0.5;
+    const double SetPoint = 1;
 
     // TODO: Precompute cos angle of LS data
 
