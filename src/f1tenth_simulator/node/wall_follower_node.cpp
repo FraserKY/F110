@@ -177,7 +177,7 @@ int main(int argc, char ** argv) {
     Wall_Follower wf;
     //ros::spin();
 
-    ros::Rate loopRate(1);
+    ros::Rate loopRate(15);
 
     while (ros::ok()) {
         loopRate.sleep();
