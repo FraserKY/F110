@@ -12,8 +12,6 @@
 #include <ackermann_msgs/AckermannDriveStamped.h>
 #include <std_msgs/Bool.h>
 
-#include <ros/console.h>
-
 #include <math.h>
 #include <algorithm>
 
