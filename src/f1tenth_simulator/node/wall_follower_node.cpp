@@ -24,16 +24,17 @@ private:
 
     const double Kp = 10;
     const double Ki = 0.01;
-    const double Kd = 0.0;
+    const double Kd = 0.1;
 
     double integral_err = 0.0;
     double prev_time;
     double current_time = ros::Time::now().toSec();
+    double prev_err = 0;
 
     bool Once = true;
 
     // Distance from wall setpoint
-    const double SetPoint = 1;
+    const double SetPoint = 0.7;
 
     // TODO: Precompute cos angle of LS data
 
@@ -107,7 +108,7 @@ public:
 
         /// Debug ///
         //ROS_INFO_STREAM("Dt: " << Dt_1 << " Error: " << Error << " Control Eff: " << U_t);
-        ROS_INFO_STREAM("Control Effort: " << U_t);
+        //ROS_INFO_STREAM("Control Effort: " << U_t);
 
         // Call Speed Command
         double speed = car_speed(U_t);
@@ -128,13 +129,19 @@ public:
         // Sum Integral
         integral_err += error * dt;
 
-        // Calculate Control Effort (Steering Angle)
-        double U_t = Kp * error + Ki * integral_err;
+        // Calculate derivative of error
+        double derivative = (error - prev_err) / dt;
 
-        //ROS_INFO_STREAM("Integral Term: " << Ki * integral_err);
+        // Calculate Control Effort (Steering Angle)
+        double U_t = Kp * error + Ki * integral_err + Kd * derivative;
+
+        ROS_INFO_STREAM("Integral Term: " << Ki * integral_err);
 
         // Set prev_time equal to cur_time
         prev_time = current_time;
+
+        // Set previous error to current error
+        prev_err = error;
 
         // Return Control Output
         return U_t;
@@ -185,7 +192,7 @@ int main(int argc, char ** argv) {
     Wall_Follower wf;
     //ros::spin();
 
-    ros::Rate loopRate(20);
+    ros::Rate loopRate(40);
 
     while (ros::ok()) {
         loopRate.sleep();
