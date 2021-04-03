@@ -408,6 +408,7 @@ clean: gtest/googlemock/gtest/CMakeFiles/gtest.dir/clean
 # Directory level rules for directory f1tenth_simulator
 
 # Convenience name for "all" pass in the directory.
+f1tenth_simulator/all: f1tenth_simulator/CMakeFiles/wall_follower_node.dir/all
 f1tenth_simulator/all: f1tenth_simulator/CMakeFiles/simulator.dir/all
 f1tenth_simulator/all: f1tenth_simulator/CMakeFiles/LaserScan.dir/all
 f1tenth_simulator/all: f1tenth_simulator/CMakeFiles/f1tenth_simulator.dir/all
@@ -421,6 +422,7 @@ f1tenth_simulator/all: f1tenth_simulator/CMakeFiles/safety_node.dir/all
 .PHONY : f1tenth_simulator/all
 
 # Convenience name for "clean" pass in the directory.
+f1tenth_simulator/clean: f1tenth_simulator/CMakeFiles/wall_follower_node.dir/clean
 f1tenth_simulator/clean: f1tenth_simulator/CMakeFiles/simulator.dir/clean
 f1tenth_simulator/clean: f1tenth_simulator/CMakeFiles/f1tenth_simulator_generate_messages_nodejs.dir/clean
 f1tenth_simulator/clean: f1tenth_simulator/CMakeFiles/actionlib_generate_messages_eus.dir/clean
@@ -507,6 +509,44 @@ f1tenth_simulator/clean: f1tenth_simulator/CMakeFiles/safety_node.dir/clean
 f1tenth_simulator/preinstall:
 
 .PHONY : f1tenth_simulator/preinstall
+
+#=============================================================================
+# Target rules for target f1tenth_simulator/CMakeFiles/wall_follower_node.dir
+
+# All Build rule for target.
+f1tenth_simulator/CMakeFiles/wall_follower_node.dir/all: f1tenth_simulator/CMakeFiles/f1tenth_simulator.dir/all
+f1tenth_simulator/CMakeFiles/wall_follower_node.dir/all: f1tenth_simulator/CMakeFiles/f1tenth_simulator_generate_messages_cpp.dir/all
+	$(MAKE) -f f1tenth_simulator/CMakeFiles/wall_follower_node.dir/build.make f1tenth_simulator/CMakeFiles/wall_follower_node.dir/depend
+	$(MAKE) -f f1tenth_simulator/CMakeFiles/wall_follower_node.dir/build.make f1tenth_simulator/CMakeFiles/wall_follower_node.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fraser/catkin_ws/build/CMakeFiles --progress-num=33,34 "Built target wall_follower_node"
+.PHONY : f1tenth_simulator/CMakeFiles/wall_follower_node.dir/all
+
+# Include target in all.
+all: f1tenth_simulator/CMakeFiles/wall_follower_node.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+f1tenth_simulator/CMakeFiles/wall_follower_node.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fraser/catkin_ws/build/CMakeFiles 8
+	$(MAKE) -f CMakeFiles/Makefile2 f1tenth_simulator/CMakeFiles/wall_follower_node.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fraser/catkin_ws/build/CMakeFiles 0
+.PHONY : f1tenth_simulator/CMakeFiles/wall_follower_node.dir/rule
+
+# Convenience name for target.
+wall_follower_node: f1tenth_simulator/CMakeFiles/wall_follower_node.dir/rule
+
+.PHONY : wall_follower_node
+
+# clean rule for target.
+f1tenth_simulator/CMakeFiles/wall_follower_node.dir/clean:
+	$(MAKE) -f f1tenth_simulator/CMakeFiles/wall_follower_node.dir/build.make f1tenth_simulator/CMakeFiles/wall_follower_node.dir/clean
+.PHONY : f1tenth_simulator/CMakeFiles/wall_follower_node.dir/clean
+
+# clean rule for target.
+clean: f1tenth_simulator/CMakeFiles/wall_follower_node.dir/clean
+
+.PHONY : clean
 
 #=============================================================================
 # Target rules for target f1tenth_simulator/CMakeFiles/simulator.dir
