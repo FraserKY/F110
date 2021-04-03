@@ -108,7 +108,7 @@ public:
         ros::Time current_time = ros::Time::now();
 
         // Calculate dt
-        double dt = current_time - prev_time;
+        double dt = (current_time - prev_time).stemp.toSec();
 
         // Sum Integral
         integral_err += error * dt;
@@ -126,7 +126,7 @@ public:
 
     double car_speed(double &steering_angle){
 
-        steering_angle = std::abs(steering_anlge);
+        steering_angle = std::abs(steering_angle);
 
         if(steering_angle < 10 && steering_angle >= 0){
             return 1.5;
