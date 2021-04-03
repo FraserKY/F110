@@ -21,8 +21,6 @@ ackermann_msgs/AckermannDriveStamped.h
 -
 std_msgs/Bool.h
 -
-ros/console.h
--
 math.h
 -
 algorithm
