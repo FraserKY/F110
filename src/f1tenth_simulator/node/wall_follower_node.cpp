@@ -22,7 +22,7 @@ private:
     const double Angle_A = 60;
     const double Angle_A_Rad = Angle_A * (M_PI / 180);
 
-    const double Kp = 10.0;
+    const double Kp = 14.0;
     const double Ki = 0.0;
     const double Kd = 0.0;
 
@@ -135,7 +135,7 @@ public:
         prev_time = current_time;
 
         // Return Control Output
-        return -1 * U_t;
+        return U_t;
 
     }
 
@@ -183,7 +183,7 @@ int main(int argc, char ** argv) {
     Wall_Follower wf;
     //ros::spin();
 
-    ros::Rate loopRate(15);
+    ros::Rate loopRate(50);
 
     while (ros::ok()) {
         loopRate.sleep();
