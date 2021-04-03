@@ -23,17 +23,19 @@ private:
     const double Angle_A_Rad = Angle_A * (M_PI / 180);
 
     const double Kp = 10;
-    const double Ki = 0.01;
+    const double Ki = 0.1;
     const double Kd = 0.0;
 
     double integral_err = 0.0;
     double prev_time;
     double current_time = ros::Time::now().toSec();
 
+    double dt;
+
     bool Once = true;
 
     // Distance from wall setpoint
-    const double SetPoint = 1;
+    const double SetPoint = 0.5;
 
     // TODO: Precompute cos angle of LS data
 
@@ -82,9 +84,9 @@ public:
         // TODO: Calculate distance at next time step based on speed
 
         // Current Speed * Time Step
-        double L =  1 * 1 ;
+        double L =  0.5 * dt ;
 
-        double Dt_1 = Dt;// + L * sin(alpha);
+        double Dt_1 = Dt + L * sin(alpha);
 
         // Calculate Error, Set Point (SetPoint) - Dt_1
 
@@ -123,7 +125,7 @@ public:
         double current_time = ros::Time::now().toSec();
 
         // Calculate dt
-        double dt = (current_time - prev_time);
+        dt = (current_time - prev_time);
 
         // Sum Integral
         integral_err += error * dt;
