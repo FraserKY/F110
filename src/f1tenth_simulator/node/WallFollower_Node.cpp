@@ -31,10 +31,12 @@ public:
         // Start Node
         n = ros::NodeHandle("~");
 
+        ROS_INFO_STREAM("Wall Follower Node Launched")
+
         // TODO: Set up subscribers and publishers
         LaserScan = n.subscribe(laser_scan_topic, 1, &Wall_Follower::LS_callback, this);
 
-        DriveMessage = n.advertise<ackermann_msgs::AckermannDriveStamped>("/nav", 1)
+        DriveMessage = n.advertise<ackermann_msgs::AckermannDriveStamped>("/Wall_Follow_Drive", 1)
 
         // Define any const variables
         const int Angle_A = 60;
@@ -153,7 +155,6 @@ public:
         DriveMessage.publish(drive_st_msg);
 
     }
-
 
 };
 
