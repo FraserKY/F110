@@ -153,10 +153,10 @@ public:
         double steering_angle_1 = std::abs(steering_angle);
 
         if(steering_angle_1 < 10 && steering_angle_1 >= 0){
-            return 0.5;
+            return 1.5;
         }
         else if(steering_angle_1 < 20 && steering_angle_1 >= 10){
-            return 0.5;
+            return 1.0;
         }
         else {
             return 0.5;
