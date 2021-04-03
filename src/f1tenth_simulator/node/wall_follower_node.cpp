@@ -82,7 +82,7 @@ public:
         // TODO: Calculate distance at next time step based on speed
 
         // Current Speed * Time Step
-        double L =  0.5 * dt ;
+        double L =  0.5 * 1 ;
 
         double Dt_1 = Dt; // + L * sin(alpha);
 
