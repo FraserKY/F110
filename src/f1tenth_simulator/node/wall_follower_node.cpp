@@ -106,8 +106,8 @@ public:
         double U_t =  PID_Calc(Error);
 
         /// Debug ///
-        ROS_INFO_STREAM("Dt: " << Dt_1 << " Error: " << Error << " Control Eff: " << U_t);
-        //ROS_INFO_STREAM("Control Effort: " << U_t);
+        //ROS_INFO_STREAM("Dt: " << Dt_1 << " Error: " << Error << " Control Eff: " << U_t);
+        ROS_INFO_STREAM("Control Effort: " << U_t);
 
         // Call Speed Command
         double speed = car_speed(U_t);
@@ -131,7 +131,7 @@ public:
         // Calculate Control Effort (Steering Angle)
         double U_t = Kp * error + Ki * integral_err;
 
-        ROS_INFO_STREAM("Integral Term: " << Ki * integral_err);
+        //ROS_INFO_STREAM("Integral Term: " << Ki * integral_err);
 
         // Set prev_time equal to cur_time
         prev_time = current_time;
@@ -143,12 +143,12 @@ public:
 
     double car_speed(double &steering_angle){
 
-        steering_angle = std::abs(steering_angle);
+        steering_angle_1 = std::abs(steering_angle);
 
-        if(steering_angle < 10 && steering_angle >= 0){
+        if(steering_angle_1 < 10 && steering_angle_1 >= 0){
             return 0.5;
         }
-        else if(steering_angle < 20 && steering_angle >= 10){
+        else if(steering_angle_1 < 20 && steering_angle_1 >= 10){
             return 0.5;
         }
         else {
@@ -183,14 +183,14 @@ public:
 int main(int argc, char ** argv) {
     ros::init(argc, argv, "Wall_Follower_Node");
     Wall_Follower wf;
-    ros::spin();
+    //ros::spin();
 
-    /*ros::Rate loopRate(100);
+    ros::Rate loopRate(20);
 
     while (ros::ok()) {
         loopRate.sleep();
         ros::spinOnce();
-    }*/
+    }
 
     return 0;
 }
