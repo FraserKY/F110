@@ -18,6 +18,23 @@ private:
 
     ros::Publisher DriveMessage;
 
+    // Define any const variables
+    const double Angle_A = 60;
+    const double Angle_A_Rad = Angle_A * (M_PI / 180);
+
+    const double Kp = 0.0;
+    const double Ki = 0.0;
+    const double Kd = 0.0;
+
+    double integral_err = 0.0;
+    ros::Time prev_time;
+    ros::Time current_time;
+
+    bool Once = true;
+
+    // Distance from wall setpoint
+    const double SetPoint = 1;
+
     // TODO: Precompute cos angle of LS data
 
     //
@@ -38,23 +55,6 @@ public:
 
         DriveMessage = n.advertise<ackermann_msgs::AckermannDriveStamped>("/Wall_Follow_Drive", 1);
 
-        // Define any const variables
-        const double Angle_A = 60;
-        const double Angle_A_Rad = Angle_A * (M_PI / 180);
-
-        const double Kp = 0.0;
-        const double Ki = 0.0;
-        const double Kd = 0.0;
-
-        double integral_err = 0.0;
-        ros::Time prev_time;
-        ros::Time current_time;
-
-        bool Once = true;
-
-        // Distance from wall setpoint
-        const double SetPoint = 1;
-
 
     }
 
@@ -65,7 +65,7 @@ public:
         // Obtain LS distance at exactly East of Car (B), and 60 degrees anticlockwise of this point (A)
         // Work out at which index 0 and 60 degrees lies
         double B = scan_msg->ranges[810];
-        double A = scan_msg->ranges[(60 * (M_PI / 180)) / scan_msg->angle_increment) + 810];
+        double A = scan_msg->ranges[((60 * (M_PI / 180)) / scan_msg->angle_increment) + 810];
 
         // Calculate Alpha (Alpha), the angle between exactly east of the car, and the shortest distance to the wall
 
@@ -88,7 +88,7 @@ public:
         double Error = SetPoint - Dt_1;
 
         // Set first prev_time
-        if(Once == true){
+        if(Once){
             // TODO: Fix below
             //ros::Time prev_time = scan_msg->header;
             Once = false;
