@@ -27,8 +27,8 @@ private:
     const double Kd = 0.0;
 
     double integral_err = 0.0;
-    ros::Time prev_time;
-    ros::Time current_time;
+    double prev_time;
+    double current_time;
 
     bool Once = true;
 
@@ -98,7 +98,7 @@ public:
         // Set first prev_time
         if(Once){
             // TODO: Fix below
-            //ros::Time prev_time = scan_msg->header;
+            prev_time = current_time;
             Once = false;
         }
 
@@ -120,7 +120,7 @@ public:
     double PID_Calc(double &error){
 
         // Get Current Time
-        ros::Time current_time = ros::Time::now();
+        double current_time = ros::Time::now().toSec();
 
         // Calculate dt
         double dt = (current_time - prev_time).toSec();
