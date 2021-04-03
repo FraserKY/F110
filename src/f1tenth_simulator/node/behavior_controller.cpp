@@ -138,7 +138,7 @@ public:
         n.getParam("random_walk_key_char", random_walk_key_char);
         n.getParam("brake_key_char", brake_key_char);
         n.getParam("nav_key_char", nav_key_char);
-        n.getParam("wall_follow_char", wall_follow_char);
+        n.getParam("wall_follow_key_char", wall_follow_char);
         // ***Add key char for new planner here***
         // n.getParam("new_key_char", new_key_char);
 
@@ -354,7 +354,7 @@ public:
             // nav
             toggle_mux(nav_mux_idx, "Navigation");
         }
-        else if (msg.buttons[wall_follow_idx]) {
+        else if (msg.data == wall_follow_char) {
             // Wall Follower
             toggle_mux(wall_follow_idx, "Wall Follower");
         }

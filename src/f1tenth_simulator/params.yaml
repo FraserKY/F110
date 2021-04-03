@@ -81,7 +81,7 @@ keyboard_key_char: "k"
 brake_key_char: "b"
 random_walk_key_char: "r"
 nav_key_char: "n"
-Wall_Follow_key_char: "w"
+wall_follow_key_char: "w"
 # **Add button for new planning method here**
 new_key_char: "z"
 

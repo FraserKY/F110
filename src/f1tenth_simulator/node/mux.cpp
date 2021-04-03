@@ -126,8 +126,8 @@ public:
         // Wall Follower Channel
         int Wall_Follow_mux_idx;
         std::string Wall_Follow_topic;
-        n.getParam("Wall_Follow_topic", Wall_Follow_topic);
-        n.getParam("Wall_Follow_idx", Wall_Follow_idx);
+        n.getParam("wall_follow_topic", Wall_Follow_topic);
+        n.getParam("wall_Follow_idx", Wall_Follow_idx);
         add_channel(Wall_Follow_topic, drive_topic, Wall_Follow_idx);
 
         // ***Add a channel for a new planner here**
