@@ -70,7 +70,7 @@ public:
         double A = scan_msg->ranges[((60 * (M_PI / 180)) / scan_msg->angle_increment)];
 
         /// Debug ///
-        ROS_INFO_STREAM("Beam 1: " << scan_msg->ranges[0], " Beam 540: " scan_msg->ranges[540]);
+        ROS_INFO_STREAM("Beam 1: " << scan_msg->ranges[0] << " Beam 540: " << scan_msg->ranges[540]);
 
 
         // Calculate Alpha (Alpha), the angle between exactly east of the car, and the shortest distance to the wall
