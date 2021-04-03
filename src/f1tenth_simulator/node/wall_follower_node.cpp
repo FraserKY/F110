@@ -88,6 +88,8 @@ public:
 
         double Error = SetPoint - Dt_1;
 
+        ROS_INFO_STREAM("Dt: " << Dt_t " Error: " << Error);
+
         // Set first prev_time
         if(Once){
             // TODO: Fix below
@@ -98,7 +100,7 @@ public:
         // Call PID Function
         double U_t = PID_Calc(Error);
 
-        ROS_INFO_STREAM("Control Effort" << U_t);
+        ROS_INFO_STREAM("Control Effort: " << U_t);
 
         // Call Speed Command
         double speed = car_speed(U_t);
