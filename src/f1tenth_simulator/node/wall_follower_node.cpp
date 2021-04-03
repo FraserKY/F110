@@ -30,8 +30,6 @@ private:
     double prev_time;
     double current_time = ros::Time::now().toSec();
 
-    double dt;
-
     bool Once = true;
 
     // Distance from wall setpoint
@@ -125,7 +123,7 @@ public:
         double current_time = ros::Time::now().toSec();
 
         // Calculate dt
-        dt = (current_time - prev_time);
+        double dt = (current_time - prev_time);
 
         // Sum Integral
         integral_err += error * dt;
