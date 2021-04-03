@@ -69,6 +69,10 @@ public:
         double B = scan_msg->ranges[((90 * (M_PI / 180)) / scan_msg->angle_increment)];
         double A = scan_msg->ranges[((60 * (M_PI / 180)) / scan_msg->angle_increment)];
 
+        /// Debug ///
+        ROS_INFO_STREAM("Beam 1: " << scan_msg->ranges[0], " Beam 540: " scan_msg->ranges[540]);
+
+
         // Calculate Alpha (Alpha), the angle between exactly east of the car, and the shortest distance to the wall
 
         double alpha = std::atan(   (A * cos(Angle_A_Rad) - B)   /    (A * sin(Angle_A_Rad)) );   // Result in radians
@@ -100,7 +104,9 @@ public:
 
         // Call PID Function
         double U_t =  PID_Calc(Error);
-        ROS_INFO_STREAM("Dt: " << Dt_1 << " Error: " << Error << " Control Eff: " << U_t);
+
+        /// Debug ///
+        //ROS_INFO_STREAM("Dt: " << Dt_1 << " Error: " << Error << " Control Eff: " << U_t);
         //ROS_INFO_STREAM("Control Effort: " << U_t);
 
         // Call Speed Command
