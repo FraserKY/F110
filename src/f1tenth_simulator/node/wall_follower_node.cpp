@@ -113,7 +113,7 @@ public:
         double speed = car_speed(U_t);
 
         // Call Publish Function
-        publish_command(speed, U_t);
+        //publish_command(speed, U_t);
 
     }
 
