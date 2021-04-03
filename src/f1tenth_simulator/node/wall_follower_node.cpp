@@ -92,7 +92,7 @@ public:
 
 
         /// Debug ///
-        ROS_INFO_STREAM("Beam 260: " << scan_msg->ranges[260] << " Beam @ 60 to X Axis: " << scan_msg->ranges[((60 * (M_PI / 180)) / scan_msg->angle_increment) + 260] << " Dt: " << Dt);
+        //ROS_INFO_STREAM("Beam 260: " << scan_msg->ranges[260] << " Beam @ 60 to X Axis: " << scan_msg->ranges[((60 * (M_PI / 180)) / scan_msg->angle_increment) + 260] << " Dt: " << Dt);
 
 
         // Set first prev_time
@@ -106,14 +106,14 @@ public:
         double U_t =  PID_Calc(Error);
 
         /// Debug ///
-        //ROS_INFO_STREAM("Dt: " << Dt_1 << " Error: " << Error << " Control Eff: " << U_t);
+        ROS_INFO_STREAM("Dt: " << Dt_1 << " Error: " << Error << " Control Eff: " << U_t);
         //ROS_INFO_STREAM("Control Effort: " << U_t);
 
         // Call Speed Command
         double speed = car_speed(U_t);
 
         // Call Publish Function
-        //publish_command(speed, U_t);
+        publish_command(speed, U_t);
 
     }
 
