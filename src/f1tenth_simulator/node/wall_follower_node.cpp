@@ -23,7 +23,7 @@ private:
     const double Angle_A_Rad = Angle_A * (M_PI / 180);
 
     const double Kp = 10;
-    const double Ki = 0.01;
+    const double Ki = 1.01;
     const double Kd = 0.0;
 
     double integral_err = 0.0;
@@ -130,6 +130,8 @@ public:
 
         // Calculate Control Effort (Steering Angle)
         double U_t = Kp * error + Ki * integral_err;
+
+        ROS_INFO_STREAM("Integral Term: " << Ki * integral_err);
 
         // Set prev_time equal to cur_time
         prev_time = current_time;
