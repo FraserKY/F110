@@ -53,7 +53,8 @@ public:
         // TODO: Set up subscribers and publishers
         LaserScan = n.subscribe(laser_scan_topic, 1, &Wall_Follower::LS_callback, this);
 
-        DriveMessage = n.advertise<ackermann_msgs::AckermannDriveStamped>("/Wall_Follow_Drive", 1);
+        //Wall_Follow_Drive
+        DriveMessage = n.advertise<ackermann_msgs::AckermannDriveStamped>("/drive", 1);
 
 
     }
@@ -100,7 +101,7 @@ public:
         // Call PID Function
         double U_t = PID_Calc(Error);
 
-        ROS_INFO_STREAM("Control Effort: " << U_t);
+        //ROS_INFO_STREAM("Control Effort: " << U_t);
 
         // Call Speed Command
         double speed = car_speed(U_t);
