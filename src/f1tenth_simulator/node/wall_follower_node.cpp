@@ -22,7 +22,7 @@ private:
     const double Angle_A = 60;
     const double Angle_A_Rad = Angle_A * (M_PI / 180);
 
-    const double Kp = 2.0;
+    const double Kp = 10.0;
     const double Ki = 0.0;
     const double Kd = 0.0;
 
@@ -113,7 +113,7 @@ public:
         double speed = car_speed(U_t);
 
         // Call Publish Function
-        publish_command(speed, U_t);
+        publish_command(speed, -1 * U_t);
 
     }
 
