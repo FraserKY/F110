@@ -22,8 +22,8 @@ private:
     const double Angle_A = 60;
     const double Angle_A_Rad = Angle_A * (M_PI / 180);
 
-    const double Kp = 10.0;
-    const double Ki = 0.0;
+    const double Kp = 1.5;
+    const double Ki = 0.05;
     const double Kd = 0.0;
 
     double integral_err = 0.0;
