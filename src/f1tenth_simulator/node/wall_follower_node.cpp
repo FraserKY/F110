@@ -22,7 +22,7 @@ private:
     const double Angle_A = 60;
     const double Angle_A_Rad = Angle_A * (M_PI / 180);
 
-    const double Kp = 10;
+    const double Kp = 5;
     const double Ki = 0.01;
     const double Kd = 0.25;
 
