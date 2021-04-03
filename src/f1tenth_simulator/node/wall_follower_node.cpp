@@ -89,7 +89,7 @@ public:
 
         double Error = SetPoint - Dt_1;
 
-        ROS_INFO_STREAM("Dt: " << Dt_1 << " Error: " << Error);
+
 
         // Set first prev_time
         if(Once){
@@ -99,8 +99,8 @@ public:
         }
 
         // Call PID Function
-        double U_t = - 1.0 * PID_Calc(Error);
-
+        double U_t =  PID_Calc(Error);
+        ROS_INFO_STREAM("Dt: " << Dt_1 << " Error: " << Error << " Control Eff: " << U_t);
         //ROS_INFO_STREAM("Control Effort: " << U_t);
 
         // Call Speed Command
