@@ -67,7 +67,7 @@ public:
         // Obtain LS distance at exactly East of Car (B), and 60 degrees anticlockwise of this point (A)
         // Work out at which index 0 and 60 degrees lies
         double B = scan_msg->ranges[260];
-        double A = scan_msg->ranges[((60 * (M_PI / 180)) / scan_msg->angle_increment) + 260];
+        double A = scan_msg->ranges[((60 * (M_PI / 180)) / scan_msg->angle_increment) - 260];
 
 
         // Calculate Alpha (Alpha), the angle between exactly east of the car, and the shortest distance to the wall
@@ -92,7 +92,7 @@ public:
 
 
         /// Debug ///
-        //ROS_INFO_STREAM("Beam 260: " << scan_msg->ranges[260] << " Beam @ 60 to X Axis: " << scan_msg->ranges[((60 * (M_PI / 180)) / scan_msg->angle_increment) + 260] << " Dt: " << Dt);
+        ROS_INFO_STREAM("Beam 260: " << scan_msg->ranges[260] << " Beam @ 60 to X Axis: " << scan_msg->ranges[((60 * (M_PI / 180)) / scan_msg->angle_increment) + 260] << " Dt: " << Dt);
 
 
         // Set first prev_time
