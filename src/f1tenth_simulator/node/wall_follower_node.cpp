@@ -22,7 +22,7 @@ private:
     const double Angle_A = 60;
     const double Angle_A_Rad = Angle_A * (M_PI / 180);
 
-    const double Kp = 10;
+    const double Kp = 1.0;
     const double Ki = 0.0;
     const double Kd = 0.0;
 
@@ -99,7 +99,7 @@ public:
         }
 
         // Call PID Function
-        double U_t = PID_Calc(Error);
+        double U_t = - 1.0 * PID_Calc(Error);
 
         //ROS_INFO_STREAM("Control Effort: " << U_t);
 
