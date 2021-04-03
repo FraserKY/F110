@@ -66,8 +66,8 @@ public:
         //ROS_INFO_STREAM("WF: LS_Callback");
         // Obtain LS distance at exactly East of Car (B), and 60 degrees anticlockwise of this point (A)
         // Work out at which index 0 and 60 degrees lies
-        double B = scan_msg->ranges[810];
-        double A = scan_msg->ranges[((60 * (M_PI / 180)) / scan_msg->angle_increment) + 810];
+        double B = scan_msg->ranges[((90 * (M_PI / 180)) / scan_msg->angle_increment)];
+        double A = scan_msg->ranges[((60 * (M_PI / 180)) / scan_msg->angle_increment)];
 
         // Calculate Alpha (Alpha), the angle between exactly east of the car, and the shortest distance to the wall
 
@@ -177,7 +177,7 @@ int main(int argc, char ** argv) {
     Wall_Follower wf;
     //ros::spin();
 
-    ros::Rate loopRate(30);
+    ros::Rate loopRate(1);
 
     while (ros::ok()) {
         loopRate.sleep();
