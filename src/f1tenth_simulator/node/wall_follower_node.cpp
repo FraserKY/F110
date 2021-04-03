@@ -28,7 +28,7 @@ private:
 
     double integral_err = 0.0;
     double prev_time;
-    double current_time;
+    double current_time = ros::Time::now().toSec();
 
     bool Once = true;
 
@@ -123,7 +123,7 @@ public:
         double current_time = ros::Time::now().toSec();
 
         // Calculate dt
-        double dt = (current_time - prev_time).toSec();
+        double dt = (current_time - prev_time);
 
         // Sum Integral
         integral_err += error * dt;
