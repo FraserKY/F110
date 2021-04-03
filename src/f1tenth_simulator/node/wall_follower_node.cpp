@@ -107,7 +107,7 @@ public:
         double U_t =  PID_Calc(Error);
 
         /// Debug ///
-        //ROS_INFO_STREAM("Dt: " << Dt_1 << " Error: " << Error << " Control Eff: " << U_t);
+        ROS_INFO_STREAM("Error: " << Error << " Control Eff: " << U_t);
         //ROS_INFO_STREAM("Control Effort: " << U_t);
 
         // Call Speed Command
@@ -135,7 +135,7 @@ public:
         // Calculate Control Effort (Steering Angle)
         double U_t = Kp * error + Ki * integral_err + Kd * derivative;
 
-        ROS_INFO_STREAM("Integral Term: " << Ki * integral_err);
+        //ROS_INFO_STREAM("Integral Term: " << Ki * integral_err);
 
         // Set prev_time equal to cur_time
         prev_time = current_time;
@@ -174,7 +174,7 @@ public:
         drive_msg.speed = speed;
         drive_msg.steering_angle = steering_angle;
 
-        ROS_INFO_STREAM(" Steer Angle: " << steering_angle);
+        //ROS_INFO_STREAM(" Steer Angle: " << steering_angle);
 
         drive_st_msg.drive = drive_msg;
 
