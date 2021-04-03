@@ -23,7 +23,7 @@ private:
     const double Angle_A_Rad = Angle_A * (M_PI / 180);
 
     const double Kp = 10;
-    const double Ki = 0.0;
+    const double Ki = 0.01;
     const double Kd = 0.25;
 
     double integral_err = 0.0;
@@ -36,7 +36,7 @@ private:
     bool Once = true;
 
     // Distance from wall setpoint
-    const double SetPoint = 0.7;
+    const double SetPoint = 1.2;
 
     // TODO: Precompute cos angle of LS data
 
