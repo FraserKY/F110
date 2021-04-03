@@ -30,6 +30,8 @@ private:
     double prev_time;
     double current_time = ros::Time::now().toSec();
     double prev_err = 0;
+    double speed;
+    double dt;
 
     bool Once = true;
 
@@ -83,10 +85,11 @@ public:
         // TODO: Calculate distance at next time step based on speed
 
         // Current Speed * Time Step
-        double L =  1 * 1 ;
+        double L =  speed * dt ;
 
         double Dt_1 = Dt + L * sin(alpha);
-        ROS_INFO_STREAM("Dt: " << Dt << " Dt_1: " << Dt_1);
+
+        ROS_INFO_STREAM("Dt: " << Dt << " Dt_1: " << Dt_1 << " L: " << L );
 
         // Calculate Error, Set Point (SetPoint) - Dt_1
 
@@ -112,7 +115,7 @@ public:
         //ROS_INFO_STREAM("Control Effort: " << U_t);
 
         // Call Speed Command
-        double speed = car_speed(U_t);
+        speed = car_speed(U_t);
 
         // Call Publish Function
         publish_command(speed, U_t);
@@ -125,7 +128,7 @@ public:
         double current_time = ros::Time::now().toSec();
 
         // Calculate dt
-        double dt = (current_time - prev_time);
+        dt = (current_time - prev_time);
 
         // Sum Integral
         integral_err += error * dt;
