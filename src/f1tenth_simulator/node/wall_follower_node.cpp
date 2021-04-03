@@ -86,7 +86,7 @@ public:
         // Current Speed * Time Step
         double L =  0.5 * dt ;
 
-        double Dt_1 = Dt + L * sin(alpha);
+        double Dt_1 = Dt; // + L * sin(alpha);
 
         // Calculate Error, Set Point (SetPoint) - Dt_1
 
