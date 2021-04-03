@@ -22,7 +22,7 @@ private:
     const double Angle_A = 60;
     const double Angle_A_Rad = Angle_A * (M_PI / 180);
 
-    const double Kp = 3;
+    const double Kp = 10;
     const double Ki = 0.0;
     const double Kd = 0.0;
 
@@ -181,14 +181,14 @@ public:
 int main(int argc, char ** argv) {
     ros::init(argc, argv, "Wall_Follower_Node");
     Wall_Follower wf;
-    //ros::spin();
+    ros::spin();
 
-    ros::Rate loopRate(10);
+    /*ros::Rate loopRate(100);
 
     while (ros::ok()) {
         loopRate.sleep();
         ros::spinOnce();
-    }
+    }*/
 
     return 0;
 }
