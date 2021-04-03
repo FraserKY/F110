@@ -62,6 +62,7 @@ public:
 
     void LS_callback(const sensor_msgs::LaserScan::ConstPtr &scan_msg){
 
+        ROS_INFO_STREAM("WF: LS_Callback");
         // Obtain LS distance at exactly East of Car (B), and 60 degrees anticlockwise of this point (A)
         // Work out at which index 0 and 60 degrees lies
         double B = scan_msg->ranges[810];
@@ -96,6 +97,8 @@ public:
 
         // Call PID Function
         double U_t = PID_Calc(Error);
+
+        ROS_INFO_STREAM("Control Effort" << U_t);
 
         // Call Publish Function
         // TODO: Write Publish function
