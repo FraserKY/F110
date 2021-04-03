@@ -108,7 +108,7 @@ public:
         ros::Time current_time = ros::Time::now();
 
         // Calculate dt
-        double dt = (current_time - prev_time).stemp.toSec();
+        double dt = (current_time - prev_time).stamp.toSec();
 
         // Sum Integral
         integral_err += error * dt;
