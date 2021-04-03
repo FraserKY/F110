@@ -87,7 +87,7 @@ if(DEFINED CATKIN_DEVEL_PREFIX)
   include_directories(include ${catkin_INCLUDE_DIRS})
 
 
-  add_executable(WallFollower_Node src/WallFollower_Node.cpp)
+  #add_executable(WallFollower_Node src/WallFollower_Node.cpp)
 
   # Add the nodes
   file(GLOB NODE_SRC_FILES node/*.cpp)
