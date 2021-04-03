@@ -13,14 +13,10 @@ class Wall_Follower {
 private:
     ros::NodeHandle n;
 
-    // Get Topic Names
-    std::string laser_scan_topic;
-    n.getParam("scan_topic", laser_scan_topic);
-
     // Create Subscribers
     ros::Subscriber LaserScan;
 
-    ros::Publisher DriveMessage:
+    ros::Publisher DriveMessage;
 
     // TODO: Precompute cos angle of LS data
 
@@ -31,15 +27,19 @@ public:
         // Start Node
         n = ros::NodeHandle("~");
 
-        ROS_INFO_STREAM("Wall Follower Node Launched")
+        // Get Topic Names
+        std::string laser_scan_topic;
+        n.getParam("scan_topic", laser_scan_topic);
+
+        ROS_INFO_STREAM("Wall Follower Node Launched");
 
         // TODO: Set up subscribers and publishers
         LaserScan = n.subscribe(laser_scan_topic, 1, &Wall_Follower::LS_callback, this);
 
-        DriveMessage = n.advertise<ackermann_msgs::AckermannDriveStamped>("/Wall_Follow_Drive", 1)
+        DriveMessage = n.advertise<ackermann_msgs::AckermannDriveStamped>("/Wall_Follow_Drive", 1);
 
         // Define any const variables
-        const int Angle_A = 60;
+        const double Angle_A = 60;
         const double Angle_A_Rad = Angle_A * (M_PI / 180);
 
         const double Kp = 0.0;
@@ -47,7 +47,7 @@ public:
         const double Kd = 0.0;
 
         double integral_err = 0.0;
-        ros::Time prev_time = 0.0;
+        ros::Time prev_time;
         ros::Time current_time;
 
         bool Once = true;
