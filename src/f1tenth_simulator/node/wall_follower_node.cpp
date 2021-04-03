@@ -143,7 +143,7 @@ public:
 
     double car_speed(double &steering_angle){
 
-        double steering_angle_1 = std::abs(steering_angle);
+        steering_angle_1 = std::abs(steering_angle);
 
         if(steering_angle_1 < 10 && steering_angle_1 >= 0){
             return 0.5;
