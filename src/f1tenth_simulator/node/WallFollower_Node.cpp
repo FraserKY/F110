@@ -64,8 +64,8 @@ public:
 
         // Obtain LS distance at exactly East of Car (B), and 60 degrees anticlockwise of this point (A)
         // Work out at which index 0 and 60 degrees lies
-        double B = scan_msg->Ranges[810];
-        double A = scan_msg->Ranges[(toRadians(60) / scan_msg->angle_increment) + 810];
+        double B = scan_msg->ranges[810];
+        double A = scan_msg->ranges[(60 * (M_PI / 180)) / scan_msg->angle_increment) + 810];
 
         // Calculate Alpha (Alpha), the angle between exactly east of the car, and the shortest distance to the wall
 
@@ -89,7 +89,8 @@ public:
 
         // Set first prev_time
         if(Once == true){
-            ros::Time prev_time = scan_msg->header;
+            // TODO: Fix below
+            //ros::Time prev_time = scan_msg->header;
             Once = false;
         }
 
