@@ -38,6 +38,7 @@ private:
     int random_walker_mux_idx;
     int nav_mux_idx;
     int brake_mux_idx;
+    int wall_follow_idx;
     // ***Add mux index for new planner here***
     // int new_mux_idx;
 
@@ -60,6 +61,7 @@ private:
     std::string brake_key_char;
     std::string random_walk_key_char;
     std::string nav_key_char;
+    std::string wall_follow_char;
     // ***Add key char for new planner here***
     // int new_key_char;
 
@@ -117,6 +119,7 @@ public:
         n.getParam("random_walker_mux_idx", random_walker_mux_idx);
         n.getParam("brake_mux_idx", brake_mux_idx);
         n.getParam("nav_mux_idx", nav_mux_idx);
+        n.getParam("wall_follow_idx", wall_follow_idx);
         // ***Add mux index for new planner here***
         // n.getParam("new_mux_idx", new_mux_idx);
 
@@ -135,6 +138,7 @@ public:
         n.getParam("random_walk_key_char", random_walk_key_char);
         n.getParam("brake_key_char", brake_key_char);
         n.getParam("nav_key_char", nav_key_char);
+        n.getParam("wall_follow_char", wall_follow_char);
         // ***Add key char for new planner here***
         // n.getParam("new_key_char", new_key_char);
 
@@ -145,7 +149,7 @@ public:
             mux_controller[i] = false;
         }
 
-        // Start with ebrake off
+        // Start with ebrake on
         safety_on = true;
 
         // Initialize state
@@ -312,6 +316,11 @@ public:
             // nav
             toggle_mux(nav_mux_idx, "Navigation");
         }
+        else if (msg.buttons[wall_follow_idx]) {
+            // Wall Follower
+            toggle_mux(wall_follow_idx, "Wall Follower");
+        }
+
         // ***Add new else if statement here for new planning method***
         // if (msg.buttons[new_button_idx]) {
         //  // new planner
@@ -345,6 +354,11 @@ public:
             // nav
             toggle_mux(nav_mux_idx, "Navigation");
         }
+        else if (msg.buttons[wall_follow_idx]) {
+            // Wall Follower
+            toggle_mux(wall_follow_idx, "Wall Follower");
+        }
+
         // ***Add new else if statement here for new planning method***
         // if (msg.data == new_key_char) {
         //  // new planner

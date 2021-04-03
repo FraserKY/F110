@@ -47,8 +47,8 @@
 
   <!-- Launch Wall Follower Nide-->
    <node pkg="f1tenth_simulator" name="Wall_Follower_Node" type="Wall_Follower_Node" output="screen">
-            <rosparam command="load" file="$(find f1tenth_simulator)/params.yaml"/>
-    	 </node>
+        <rosparam command="load" file="$(find f1tenth_simulator)/params.yaml"/>
+   </node>
 
   <!-- ***Put launch command for new planner here:-->
   <!-- Launch the New Planner Node -->

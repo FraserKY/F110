@@ -123,6 +123,13 @@ public:
         n.getParam("nav_mux_idx", nav_mux_idx);
         add_channel(nav_drive_topic, drive_topic, nav_mux_idx);
 
+        // Wall Follower Channel
+        int Wall_Follow_mux_idx;
+        std::string Wall_Follow_topic;
+        n.getParam("Wall_Follow_topic", Wall_Follow_topic);
+        n.getParam("Wall_Follow_idx", Wall_Follow_idx);
+        add_channel(Wall_Follow_topic, drive_topic, Wall_Follow_idx);
+
         // ***Add a channel for a new planner here**
         // int new_mux_idx;
         // std::string new_drive_topic;
