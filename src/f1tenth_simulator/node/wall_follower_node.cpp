@@ -170,7 +170,7 @@ public:
         drive_st_msg.drive = drive_msg;
 
         //publish
-        DriveMessage.publish(drive_st_msg);
+        //DriveMessage.publish(drive_st_msg);
 
     }
 
