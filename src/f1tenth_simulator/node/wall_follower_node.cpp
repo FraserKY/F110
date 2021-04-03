@@ -110,10 +110,10 @@ public:
         //ROS_INFO_STREAM("Control Effort: " << U_t);
 
         // Call Speed Command
-        double speed = car_speed(U_t);
+        double speed = car_speed(std::abs(U_t));
 
         // Call Publish Function
-        publish_command(speed, -1 * U_t);
+        publish_command(speed, U_t);
 
     }
 
@@ -135,7 +135,7 @@ public:
         prev_time = current_time;
 
         // Return Control Output
-        return U_t;
+        return -1 * U_t;
 
     }
 
