@@ -33,9 +33,10 @@ public:
         // Create pointer for lidar processed:
         double *lidar_proc;
 
+        sensor_msgs::LaserScan LS = msg;
         //double lidar[] = msg.ranges;
 
-        lidar_proc = preprocess_lidar(msg);
+        lidar_proc = preprocess_lidar(LS);
 
     }
 
