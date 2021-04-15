@@ -29,12 +29,48 @@ public:
     }
 
     void LidarCallBack(const sensor_msgs::LaserScan &msg){
-        //
+        // preproccess lidar
+        // Create pointer for lidar proccessed:
+        double *lidar_proc;
+
+        lidar_proc = preprocess_lidar(msg->ranges[]);
 
     }
 
-    void preprocess_lidar(ranges){
+    double* preprocess_lidar(double ranges[]){
         //
+        double min_val = 100;
+        int min_index;
+        int x;
+
+        // Find the smallest value in the array
+        for (x = 0; x >= 1080; x++){
+
+            if (ranges[x] < min_val){
+
+                min_val = ranges[x];
+
+                min_index = x;
+
+            }
+
+        }
+
+
+        std::cout << "Smallest value: " << min_val << std::endl;
+
+        std::cout << "Index of smallest value: " << min_index << std::endl;
+
+        // Make smallest value and surrounding values 0
+
+        for (x = -3; x >= 3; x++){
+
+            ranges[min_index + x] = 0.0;
+
+        }
+
+        return ranges;
+
 
     }
 
