@@ -28,19 +28,18 @@ public:
         LaserScan_sub = n.subscribe(laser_scan_topic, 1, &follow_the_gap::LidarCallBack, this);
     }
 
-    void LidarCallBack(const sensor_msgs::LaserScan::ConstPtr& msg){
+    void LidarCallBack(sensor_msgs::LaserScan& msg){
         // preprocess lidar
         // Create pointer for lidar processed:
         double *lidar_proc;
 
-        sensor_msgs::LaserScan LS = msg;
-        //double lidar[] = msg.ranges;
+        double lidar[] = msg->anges;
 
         lidar_proc = preprocess_lidar(LS);
 
     }
 
-    double* preprocess_lidar(sensor_msgs::LaserScan::ConstPtr& msg){
+    double* preprocess_lidar(sensor_msgs::LaserScan& msg){
         //
         double min_val = 100;
         int min_index;
