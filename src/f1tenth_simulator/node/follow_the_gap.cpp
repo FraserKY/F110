@@ -35,7 +35,7 @@ public:
 
         //double lidar[] = msg.ranges;
 
-        lidar_proc = preprocess_lidar(*msg);
+        lidar_proc = preprocess_lidar(msg);
 
     }
 
@@ -72,9 +72,7 @@ public:
 
         return ranges;
 
-
     }
-
 
 };
 
