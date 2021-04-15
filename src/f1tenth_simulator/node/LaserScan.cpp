@@ -49,7 +49,7 @@ public:
 
 	}
 
-	void LaserCallBack(const sensor_msgs::LaserScan::ConstPtr & msg){
+	void LaserCallBack(const sensor_msgs::LaserScan & msg){
 		//int i = msg.ranges.size();
 		//ROS_INFO("Array size: %d", i);
 		
