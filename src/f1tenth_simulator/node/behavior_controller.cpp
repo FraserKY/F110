@@ -122,7 +122,7 @@ public:
         n.getParam("brake_mux_idx", brake_mux_idx);
         n.getParam("nav_mux_idx", nav_mux_idx);
         n.getParam("wall_follow_idx", wall_follow_idx);
-        n.getParam("follow_the_gap_mux_idx", follow_the_gap_mux_idx)
+        n.getParam("follow_the_gap_mux_idx", follow_the_gap_mux_idx);
         // ***Add mux index for new planner here***
         // n.getParam("new_mux_idx", new_mux_idx);
 
@@ -363,7 +363,7 @@ public:
             toggle_mux(wall_follow_idx, "Wall Follower");
         }
 
-        else if (msg.data == new_key_char) {
+        else if (msg.data == follow_the_gap_key_char) {
             // follow the gap
             toggle_mux(follow_the_gap_mux_idx, "Follow the Gap");
         }
