@@ -48,13 +48,14 @@ ttc_threshold: 0.01 # Sim Value for Collision
 ttc_threshold_AEB: 1.8 # Value for Automatic Emergency Braking node
 
 # Indices for mux controller
-mux_size: 6
+mux_size: 7
 joy_mux_idx: 0
 key_mux_idx: 1
 random_walker_mux_idx: 2
 brake_mux_idx: 3
 nav_mux_idx: 4
 wall_follow_idx: 6
+follow_the_gap_mux_idx: 7
 # **Add index for new planning method here**
 # **(increase mux_size accordingly)**
 new_method_mux_idx: -1
@@ -82,6 +83,7 @@ brake_key_char: "b"
 random_walk_key_char: "r"
 nav_key_char: "n"
 wall_follow_key_char: "p"
+follow_the_gap_key_char: "f"
 # **Add button for new planning method here**
 new_key_char: "z"
 
@@ -114,6 +116,7 @@ rand_drive_topic: "/rand_drive"
 brake_drive_topic: "/brake"
 nav_drive_topic: "/nav"
 Wall_Follow_Drive_topic: "/Wall_Follow_Drive"
+follow_the_gap_topic: "/follow_the_gap_drive"
 # **Add name for new planning method here**
 new_drive_topic: "/new_drive"
 

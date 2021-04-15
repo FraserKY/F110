@@ -39,6 +39,7 @@ private:
     int nav_mux_idx;
     int brake_mux_idx;
     int wall_follow_idx;
+    int follow_the_gap_mux_idx;
     // ***Add mux index for new planner here***
     // int new_mux_idx;
 
@@ -62,6 +63,7 @@ private:
     std::string random_walk_key_char;
     std::string nav_key_char;
     std::string wall_follow_char;
+    std::string follow_the_gap_key_char;
     // ***Add key char for new planner here***
     // int new_key_char;
 
@@ -120,6 +122,7 @@ public:
         n.getParam("brake_mux_idx", brake_mux_idx);
         n.getParam("nav_mux_idx", nav_mux_idx);
         n.getParam("wall_follow_idx", wall_follow_idx);
+        n.getParam("follow_the_gap_mux_idx", follow_the_gap_mux_idx)
         // ***Add mux index for new planner here***
         // n.getParam("new_mux_idx", new_mux_idx);
 
@@ -139,6 +142,7 @@ public:
         n.getParam("brake_key_char", brake_key_char);
         n.getParam("nav_key_char", nav_key_char);
         n.getParam("wall_follow_key_char", wall_follow_char);
+        n.getParam("follow_the_gap_key_char", follow_the_gap_key_char);
         // ***Add key char for new planner here***
         // n.getParam("new_key_char", new_key_char);
 
@@ -357,6 +361,11 @@ public:
         else if (msg.data == wall_follow_char) {
             // Wall Follower
             toggle_mux(wall_follow_idx, "Wall Follower");
+        }
+
+        else if (msg.data == new_key_char) {
+            // follow the gap
+            toggle_mux(follow_the_gap_mux_idx, "Follow the Gap");
         }
 
         // ***Add new else if statement here for new planning method***

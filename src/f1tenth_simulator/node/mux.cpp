@@ -130,6 +130,13 @@ public:
         n.getParam("wall_Follow_idx", wall_follow_mux_idx);
         add_channel(wall_follow_topic, drive_topic, wall_follow_mux_idx);
 
+        // Follow the gap channel
+        int follow_the_gap_mux_idx;
+        std::string follow_the_gap_topic;
+        n.getParam("follow_the_gap_topic", follow_the_gap_topic);
+        n.getParam("follow_the_gap_mux_idx", follow_the_gap_mux_idx);
+        add_channel(follow_the_gap_topic, drive_topic, follow_the_gap_mux_idx);
+
         // ***Add a channel for a new planner here**
         // int new_mux_idx;
         // std::string new_drive_topic;

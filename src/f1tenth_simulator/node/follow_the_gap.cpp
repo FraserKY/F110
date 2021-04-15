@@ -41,10 +41,9 @@ public:
         //
         double min_val = 100;
         int min_index;
-        int x;
 
         // Find the smallest value in the array
-        for (x = 0; x >= 1080; x++){
+        for (int x = 0; x >= 1080; x++){
 
             if (ranges[x] < min_val){
 
@@ -57,9 +56,9 @@ public:
         }
 
 
-        std::cout << "Smallest value: " << min_val << std::endl;
+        ROS_INFO_STREAM("Smallest value: " << min_val);
 
-        std::cout << "Index of smallest value: " << min_index << std::endl;
+        ROS_INFO_STREAM("Index of smallest value: " << min_index);
 
         // Make smallest value and surrounding values 0
 
