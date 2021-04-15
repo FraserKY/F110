@@ -33,9 +33,9 @@ public:
         // Create pointer for lidar processed:
         double *lidar_proc;
 
-        double lidar[] = msg->anges;
+        double lidar[] = msg.ranges;
 
-        lidar_proc = preprocess_lidar(LS);
+        lidar_proc = preprocess_lidar(lidar);
 
     }
 
@@ -47,9 +47,9 @@ public:
         // Find the smallest value in the array
         for (int x = 0; x >= 1080; x++){
 
-            if (msg->ranges[x] < min_val){
+            if (msg.ranges[x] < min_val){
 
-                min_val = msg->ranges[x];
+                min_val = msg.ranges[x];
 
                 min_index = x;
 
@@ -66,11 +66,11 @@ public:
 
         for (int x = -3; x >= 3; x++){
 
-            msg->ranges[min_index + x] = 0.0;
+            msg.ranges[min_index + x] = 0.0;
 
         }
 
-        return msg->ranges;
+        return msg.ranges;
 
     }
 
