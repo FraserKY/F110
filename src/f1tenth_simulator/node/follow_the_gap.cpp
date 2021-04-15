@@ -47,9 +47,9 @@ public:
         // Find the smallest value in the array
         for (int x = 0; x >= 1080; x++){
 
-            if (msg.ranges[x] < min_val){
+            if (msg->ranges[x] < min_val){
 
-                min_val = msg.ranges[x];
+                min_val = msg->ranges[x];
 
                 min_index = x;
 
@@ -66,11 +66,11 @@ public:
 
         for (int x = -3; x >= 3; x++){
 
-            msg.ranges[min_index + x] = 0.0;
+            msg->ranges[min_index + x] = 0.0;
 
         }
 
-        return ranges;
+        return msg.ranges;
 
     }
 
