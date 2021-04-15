@@ -33,7 +33,9 @@ public:
         // Create pointer for lidar proccessed:
         double *lidar_proc;
 
-        lidar_proc = preprocess_lidar(msg->ranges[]);
+        double lidar[] = msg->ranges[];
+
+        lidar_proc = preprocess_lidar(lidar);
 
     }
 
@@ -62,7 +64,7 @@ public:
 
         // Make smallest value and surrounding values 0
 
-        for (x = -3; x >= 3; x++){
+        for (int x = -3; x >= 3; x++){
 
             ranges[min_index + x] = 0.0;
 
