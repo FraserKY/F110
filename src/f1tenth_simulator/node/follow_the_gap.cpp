@@ -39,7 +39,7 @@ public:
 
     }
 
-    double* preprocess_lidar(sensor_msgs::LaserScan& msg){
+    double* preprocess_lidar(double lidar[]){
         //
         double min_val = 100;
         int min_index;
@@ -47,9 +47,9 @@ public:
         // Find the smallest value in the array
         for (int x = 0; x >= 1080; x++){
 
-            if (msg.ranges[x] < min_val){
+            if (lidar[x] < min_val){
 
-                min_val = msg.ranges[x];
+                min_val = lidar[x];
 
                 min_index = x;
 
@@ -66,11 +66,11 @@ public:
 
         for (int x = -3; x >= 3; x++){
 
-            msg.ranges[min_index + x] = 0.0;
+            lidar[min_index + x] = 0.0;
 
         }
 
-        return msg.ranges;
+        return lidar;
 
     }
 
