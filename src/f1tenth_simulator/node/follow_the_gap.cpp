@@ -33,9 +33,9 @@ public:
         // Create pointer for lidar processed:
         double *lidar_proc;
 
-        double lidar[] = msg.ranges[1080];
+        //double lidar[] = msg.ranges[1080];
 
-        lidar_proc = preprocess_lidar(lidar);
+        lidar_proc = preprocess_lidar(msg.ranges);
 
     }
 
