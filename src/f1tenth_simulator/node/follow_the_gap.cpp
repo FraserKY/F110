@@ -39,7 +39,7 @@ public:
 
     }
 
-    double* preprocess_lidar(const sensor_msgs::LaserScan::ConstPtr& msg){
+    double* preprocess_lidar(sensor_msgs::LaserScan::ConstPtr& msg){
         //
         double min_val = 100;
         int min_index;
@@ -70,7 +70,7 @@ public:
 
         }
 
-        return msg.ranges;
+        return msg->ranges;
 
     }
 
