@@ -31,15 +31,15 @@ public:
     void LidarCallBack(sensor_msgs::LaserScan& msg){
         // preprocess lidar
         // Create pointer for lidar processed:
-        double *lidar_proc;
+        //double *lidar_proc;
 
         double lidar[msg.ranges.size] = msg.ranges;
 
-        lidar_proc = preprocess_lidar(lidar);
+        preprocess_lidar(lidar);
 
     }
 
-    double* preprocess_lidar(double lidar[]){
+    void preprocess_lidar(double lidar[]){
         //
         double min_val = 100;
         int min_index;
@@ -64,13 +64,11 @@ public:
 
         // Make smallest value and surrounding values 0
 
-        for (int x = -3; x >= 3; x++){
+       /* for (int x = -3; x >= 3; x++){
 
             lidar[min_index + x] = 0.0;
 
-        }
-
-        return lidar;
+        }*/
 
     }
 
