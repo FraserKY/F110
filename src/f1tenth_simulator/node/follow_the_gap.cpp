@@ -38,7 +38,7 @@ public:
 
         std::vector<float> scan_ranges = convertLSRanges(msg);
 
-        ROS_INFO_STREAM("Vector: " << scan_ranges);
+        //ROS_INFO_STREAM("Vector: " << scan_ranges);
 
         //preprocess_lidar(msg);
 
