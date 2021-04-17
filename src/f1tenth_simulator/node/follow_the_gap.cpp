@@ -44,7 +44,7 @@ public:
 
     }
 
-    std::vector<float> convertLSRanges(const sensor_messages::LaserScan::ConstPtr& scan_msg){
+    std::vector<float> convertLSRanges(const sensor_messages::LaserScan& scan_msg){
 
         return std::vector<float>(scan_msg.ranges.begin(), scan_msg.ranges.end());
 
