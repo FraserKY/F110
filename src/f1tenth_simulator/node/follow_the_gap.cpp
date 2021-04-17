@@ -29,7 +29,7 @@ public:
         LaserScan_sub = n.subscribe(laser_scan_topic, 1, &follow_the_gap::LidarCallBack, this);
     }
 
-    void LidarCallBack(sensor_msgs::LaserScan& msg){
+    void LidarCallBack(sensor_msgs::LaserScan::ConstPtr& msg){
         // preprocess lidar
         // Create pointer for lidar processed:
         //double *lidar_proc;
@@ -44,7 +44,7 @@ public:
 
     }
 
-    std::vector<float> convertLSRanges(const sensor_messages::LaserScan& scan_msg){
+    std::vector<float> convertLSRanges(const sensor_messages::LaserScan::ConstPtr& msg){
 
         return std::vector<float>(scan_msg.ranges.begin(), scan_msg.ranges.end());
 
