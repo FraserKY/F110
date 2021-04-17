@@ -4,6 +4,7 @@
 
 #include <ackermann_msgs/AckermannDriveStamped.h>
 #include <sensor_msgs/LaserScan.h>
+#include <vector>
 
 class follow_the_gap{
 private:
@@ -35,14 +36,27 @@ public:
 
         //double lidar[msg.ranges.size()] = msg.ranges;
 
-        preprocess_lidar(msg.ranges);
+        std::vector<float> scan_ranges = convertLSRanges(msg);
+
+        ROS_INFO_STREAM("Vector: " << scan_ranges);
+
+        //preprocess_lidar(msg);
 
     }
 
-    void preprocess_lidar(double lidar[]){
+    std::vector<float> convertLSRanges(const sensor_messages::LaserScan::ConstPtr& scan_msg){
+
+        return std::vector<float>(scan_msg.ranges.begin(), scan_msg.ranges.end());
+
+    }
+
+
+    void preprocess_lidar(std::vector<float> lidar){
         //
         double min_val = 100;
         int min_index;
+
+        //cast
 
         // Find the smallest value in the array
         for (int x = 0; x >= 1080; x++){
