@@ -32,11 +32,14 @@ public:
     void LidarCallBack(sensor_msgs::LaserScan::ConstPtr& msg){
         // preprocess lidar
         // Create pointer for lidar processed:
-        //double *lidar_proc;
 
-        //double lidar[msg.ranges.size()] = msg.ranges;
+        double lidar;
 
-        std::vector<float> scan_ranges = convertLSRanges(msg);
+        for (int x = 0; x <=1080; x++){
+            lidar[x] = msg.ranges[x];
+            ROS_INFO_STREAM("Lidar [" << x << "]: = " << lidar[x]);
+            ROS_INFO_STREAM("Callback [" << x << "]: = " msg.ranges[x]);
+        }
 
         //ROS_INFO_STREAM("Vector: " << scan_ranges);
 
@@ -46,12 +49,12 @@ public:
 
     std::vector<float> convertLSRanges(const sensor_messages::LaserScan::ConstPtr& msg){
 
-        return std::vector<float>(scan_msg.ranges.begin(), scan_msg.ranges.end());
+       // return std::vector<float>(scan_msg.ranges.begin(), scan_msg.ranges.end());
 
     }
 
 
-    void preprocess_lidar(std::vector<float> lidar){
+    void preprocess_lidar(double lidar){
         //
         double min_val = 100;
         int min_index;
