@@ -285,19 +285,6 @@ gtest/fast:
 .PHONY : gtest/fast
 
 #=============================================================================
-# Target rules for targets named wall_follower_node
-
-# Build rule for target.
-wall_follower_node: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 wall_follower_node
-.PHONY : wall_follower_node
-
-# fast build rule for target.
-wall_follower_node/fast:
-	$(MAKE) -f f1tenth_simulator/CMakeFiles/wall_follower_node.dir/build.make f1tenth_simulator/CMakeFiles/wall_follower_node.dir/build
-.PHONY : wall_follower_node/fast
-
-#=============================================================================
 # Target rules for targets named simulator
 
 # Build rule for target.
@@ -1346,7 +1333,6 @@ help:
 	@echo "... gmock"
 	@echo "... gtest_main"
 	@echo "... gtest"
-	@echo "... wall_follower_node"
 	@echo "... simulator"
 	@echo "... f1tenth_simulator_generate_messages_nodejs"
 	@echo "... actionlib_generate_messages_eus"
