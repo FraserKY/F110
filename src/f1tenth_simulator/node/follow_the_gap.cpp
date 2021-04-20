@@ -4,7 +4,6 @@
 
 #include <ackermann_msgs/AckermannDriveStamped.h>
 #include <sensor_msgs/LaserScan.h>
-#include <vector>
 
 class follow_the_gap{
 private:
@@ -29,63 +28,21 @@ public:
         LaserScan_sub = n.subscribe(laser_scan_topic, 1, &follow_the_gap::LidarCallBack, this);
     }
 
-    void LidarCallBack(sensor_msgs::LaserScan::ConstPtr& msg){
+    void LidarCallBack(sensor_msgs::LaserScan& msg){
         // preprocess lidar
         // Create pointer for lidar processed:
 
         double lidar[1080] = {};
 
         for (int x = 0; x <=1080; x++){
-            lidar[x] = msg->ranges[x];
+            lidar[x] = msg.ranges[x];
             ROS_INFO_STREAM("Lidar [" << x << "]: = " << lidar[x]);
-            ROS_INFO_STREAM("Callback [" << x << "]: = " << msg->ranges[x]);
+            ROS_INFO_STREAM("Callback [" << x << "]: = " << msg.ranges[x]);
         }
 
         //ROS_INFO_STREAM("Vector: " << scan_ranges);
 
         //preprocess_lidar(msg);
-
-    }
-
-   // std::vector<float> convertLSRanges(const sensor_messages::LaserScan::ConstPtr& msg){
-
-       // return std::vector<float>(scan_msg.ranges.begin(), scan_msg.ranges.end());
-
-    //}
-
-
-    void preprocess_lidar(double lidar[1080]){
-        //
-        double min_val = 100;
-        int min_index;
-
-        //cast
-
-        // Find the smallest value in the array
-        for (int x = 0; x >= 1080; x++){
-
-            if (lidar[x] < min_val){
-
-                min_val = lidar[x];
-
-                min_index = x;
-
-            }
-
-        }
-
-
-        ROS_INFO_STREAM("Smallest value: " << min_val);
-
-        ROS_INFO_STREAM("Index of smallest value: " << min_index);
-
-        // Make smallest value and surrounding values 0
-
-       /* for (int x = -3; x >= 3; x++){
-
-            lidar[min_index + x] = 0.0;
-
-        }*/
 
     }
 
