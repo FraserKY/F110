@@ -87,7 +87,7 @@ if(DEFINED CATKIN_DEVEL_PREFIX)
   include_directories(include ${catkin_INCLUDE_DIRS})
 
 
-  add_executable(follow_the_gap src/follow_the_gap.cpp)
+  #add_executable(follow_the_gap src/follow_the_gap.cpp)
 
   # Add the nodes
   file(GLOB NODE_SRC_FILES node/*.cpp)
