@@ -33,12 +33,12 @@ public:
         // preprocess lidar
         // Create pointer for lidar processed:
 
-        double lidar[];
+        double lidar[1080] = {};
 
         for (int x = 0; x <=1080; x++){
             lidar[x] = msg->ranges[x];
             ROS_INFO_STREAM("Lidar [" << x << "]: = " << lidar[x]);
-            ROS_INFO_STREAM("Callback [" << x << "]: = " msg.ranges[x]);
+            ROS_INFO_STREAM("Callback [" << x << "]: = " msg->ranges[x]);
         }
 
         //ROS_INFO_STREAM("Vector: " << scan_ranges);
@@ -54,7 +54,7 @@ public:
     //}
 
 
-    void preprocess_lidar(double lidar){
+    void preprocess_lidar(double lidar[1080]){
         //
         double min_val = 100;
         int min_index;
