@@ -80,6 +80,7 @@ public:
             lidar[min_index + x] = 0.0;
 
             ROS_INFO_STREAM("Lidar Index value " << min_index << " " << Lidar[min_index + x]);
+
         }
 
     }
