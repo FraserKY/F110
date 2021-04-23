@@ -44,14 +44,14 @@ public:
 
         //ROS_INFO_STREAM("Vector: " << scan_ranges);
 
-        int b = PreProcessArray(lidar);
+        PreProcessArray(lidar);
 
-        ROS_INFO_STREAM("Lidar Arry Change Test: " << lidar[b]);
+        //ROS_INFO_STREAM("Lidar Array Change Test: " << lidar[b]);
 
 
     }
 
-    int PreProcessArray(double lidar[1080]) {
+    void PreProcessArray(double lidar[1080]) {
 
         double min_val = 100;
         int min_index;
@@ -80,7 +80,7 @@ public:
 
             lidar[min_index + x] = 0.0;
 
-            ROS_INFO_STREAM("Lidar Index value " << min_index << " " << lidar[min_index + x]);
+            //ROS_INFO_STREAM("Lidar Index value " << min_index << " " << lidar[min_index + x]);
 
         }
 
