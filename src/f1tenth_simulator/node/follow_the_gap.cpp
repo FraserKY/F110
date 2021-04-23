@@ -42,7 +42,40 @@ public:
 
         //ROS_INFO_STREAM("Vector: " << scan_ranges);
 
-        //preprocess_lidar(msg);
+        PreProcessArray(lidar);
+
+
+
+    }
+
+    void PreProcessArray(double lidar[1080]) {
+
+        double min_val = 100;
+        int min_index;
+
+        // Find the smallest value in the array
+        for (int x = 0; x < 1080; x++) {
+
+            if (lidar[x] < min_val) {
+
+                min_val = lidar[x];
+
+                min_index = x;
+
+            }
+
+        }
+
+        // Print the smallest value in an array
+        ROS_INFO_STREAM("Smallest value: " << min_val);
+
+        ROS_INFO_STREAM("Index of smallest value: " << min_index);
+
+
+        // Make smallest value and surrounding values 0
+        /* for (int x = -3; x >= 3; x++){
+             lidar[min_index + x] = 0.0;
+         }*/
 
     }
 
