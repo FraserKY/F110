@@ -89,7 +89,7 @@ public:
 
         double Dt_1 = Dt + L * sin(alpha);
 
-        ROS_INFO_STREAM("Dt: " << Dt << " Dt_1: " << Dt_1 << " L: " << L );
+        //ROS_INFO_STREAM("Dt: " << Dt << " Dt_1: " << Dt_1 << " L: " << L );
 
         // Calculate Error, Set Point (SetPoint) - Dt_1
 
