@@ -168,6 +168,21 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+f1tenth_simulator/CMakeFiles/wall_follower_node.dir/rule:
+	cd /home/fraser/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 f1tenth_simulator/CMakeFiles/wall_follower_node.dir/rule
+.PHONY : f1tenth_simulator/CMakeFiles/wall_follower_node.dir/rule
+
+# Convenience name for target.
+wall_follower_node: f1tenth_simulator/CMakeFiles/wall_follower_node.dir/rule
+
+.PHONY : wall_follower_node
+
+# fast build rule for target.
+wall_follower_node/fast:
+	cd /home/fraser/catkin_ws/build && $(MAKE) -f f1tenth_simulator/CMakeFiles/wall_follower_node.dir/build.make f1tenth_simulator/CMakeFiles/wall_follower_node.dir/build
+.PHONY : wall_follower_node/fast
+
+# Convenience name for target.
 f1tenth_simulator/CMakeFiles/simulator.dir/rule:
 	cd /home/fraser/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 f1tenth_simulator/CMakeFiles/simulator.dir/rule
 .PHONY : f1tenth_simulator/CMakeFiles/simulator.dir/rule
@@ -1541,6 +1556,33 @@ node/simulator.cpp.s:
 	cd /home/fraser/catkin_ws/build && $(MAKE) -f f1tenth_simulator/CMakeFiles/simulator.dir/build.make f1tenth_simulator/CMakeFiles/simulator.dir/node/simulator.cpp.s
 .PHONY : node/simulator.cpp.s
 
+node/wall_follower_node.o: node/wall_follower_node.cpp.o
+
+.PHONY : node/wall_follower_node.o
+
+# target to build an object file
+node/wall_follower_node.cpp.o:
+	cd /home/fraser/catkin_ws/build && $(MAKE) -f f1tenth_simulator/CMakeFiles/wall_follower_node.dir/build.make f1tenth_simulator/CMakeFiles/wall_follower_node.dir/node/wall_follower_node.cpp.o
+.PHONY : node/wall_follower_node.cpp.o
+
+node/wall_follower_node.i: node/wall_follower_node.cpp.i
+
+.PHONY : node/wall_follower_node.i
+
+# target to preprocess a source file
+node/wall_follower_node.cpp.i:
+	cd /home/fraser/catkin_ws/build && $(MAKE) -f f1tenth_simulator/CMakeFiles/wall_follower_node.dir/build.make f1tenth_simulator/CMakeFiles/wall_follower_node.dir/node/wall_follower_node.cpp.i
+.PHONY : node/wall_follower_node.cpp.i
+
+node/wall_follower_node.s: node/wall_follower_node.cpp.s
+
+.PHONY : node/wall_follower_node.s
+
+# target to generate assembly for a file
+node/wall_follower_node.cpp.s:
+	cd /home/fraser/catkin_ws/build && $(MAKE) -f f1tenth_simulator/CMakeFiles/wall_follower_node.dir/build.make f1tenth_simulator/CMakeFiles/wall_follower_node.dir/node/wall_follower_node.cpp.s
+.PHONY : node/wall_follower_node.cpp.s
+
 src/distance_transform.o: src/distance_transform.cpp.o
 
 .PHONY : src/distance_transform.o
@@ -1686,6 +1728,7 @@ help:
 	@echo "... install/local"
 	@echo "... install"
 	@echo "... list_install_components"
+	@echo "... wall_follower_node"
 	@echo "... simulator"
 	@echo "... f1tenth_simulator_generate_messages_nodejs"
 	@echo "... actionlib_generate_messages_eus"
@@ -1789,6 +1832,9 @@ help:
 	@echo "... node/simulator.o"
 	@echo "... node/simulator.i"
 	@echo "... node/simulator.s"
+	@echo "... node/wall_follower_node.o"
+	@echo "... node/wall_follower_node.i"
+	@echo "... node/wall_follower_node.s"
 	@echo "... src/distance_transform.o"
 	@echo "... src/distance_transform.i"
 	@echo "... src/distance_transform.s"
