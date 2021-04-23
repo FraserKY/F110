@@ -39,6 +39,7 @@ public:
             // Successfully copies array from msg.
             // ROS_INFO_STREAM("Lidar [" << x << "]: = " << lidar[x]);
             // ROS_INFO_STREAM("Callback [" << x << "]: = " << msg.ranges[x]);
+
         }
 
         //ROS_INFO_STREAM("Vector: " << scan_ranges);
@@ -68,15 +69,18 @@ public:
         }
 
         // Print the smallest value in an array
-        ROS_INFO_STREAM("Smallest value: " << min_val);
+        //ROS_INFO_STREAM("Smallest value: " << min_val);
 
-        ROS_INFO_STREAM("Index of smallest value: " << min_index);
+        //ROS_INFO_STREAM("Index of smallest value: " << min_index);
 
 
         // Make smallest value and surrounding values 0
-        /* for (int x = -3; x >= 3; x++){
-             lidar[min_index + x] = 0.0;
-         }*/
+        for (int x = -3; x >= 3; x++){
+
+            lidar[min_index + x] = 0.0;
+
+            ROS_INFO_STREAM("Lidar Index value " << min_index << " " << Lidar[min_index + x]);
+        }
 
     }
 
