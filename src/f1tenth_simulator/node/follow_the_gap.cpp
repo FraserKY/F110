@@ -75,7 +75,7 @@ public:
 
 
         // Make smallest value and surrounding values 0
-        for (int x = -3; x >= 3; x++){
+        for (int x = -3; x < 3; x++){
 
             lidar[min_index + x] = 0.0;
 
