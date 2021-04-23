@@ -36,8 +36,9 @@ public:
 
         for (int x = 0; x < 1080; x++){
             lidar[x] = msg.ranges[x];
-            ROS_INFO_STREAM("Lidar [" << x << "]: = " << lidar[x]);
-            ROS_INFO_STREAM("Callback [" << x << "]: = " << msg.ranges[x]);
+            // Successfully copies array from msg.
+            // ROS_INFO_STREAM("Lidar [" << x << "]: = " << lidar[x]);
+            // ROS_INFO_STREAM("Callback [" << x << "]: = " << msg.ranges[x]);
         }
 
         //ROS_INFO_STREAM("Vector: " << scan_ranges);
