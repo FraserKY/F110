@@ -111,7 +111,7 @@ public:
         double U_t =  PID_Calc(Error);
 
         /// Debug ///
-        ROS_INFO_STREAM("Error: " << Error << " Control Eff: " << U_t);
+        //ROS_INFO_STREAM("Error: " << Error << " Control Eff: " << U_t);
         //ROS_INFO_STREAM("Control Effort: " << U_t);
 
         // Call Speed Command
@@ -183,7 +183,7 @@ public:
         drive_st_msg.drive = drive_msg;
 
         //publish
-        DriveMessage.publish(drive_st_msg);
+        //DriveMessage.publish(drive_st_msg);
 
     }
 
