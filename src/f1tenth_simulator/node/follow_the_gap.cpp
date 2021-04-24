@@ -40,6 +40,7 @@ public:
 
         double lidar[1080] = {};
         double steering_angle;
+        int steering_dir_index;
 
         for (int x = 0; x < 1080; x++){
             lidar[x] = msg.ranges[x];
@@ -59,14 +60,13 @@ public:
         int array_size = sizeof(lidar) / sizeof(lidar[0]);
 
         // Create a pointer to access return values from LCNZG function
-        int *p;
 
         // Find the largest consecutive non-zero gap
-        p = LargestConsecutiveNonZeroGap(lidar, array_size);
+        steering_dir_index = LargestConsecutiveNonZeroGap(lidar, array_size);
 
-        ROS_INFO_STREAM("Middle Index: " << *(p));
+        ROS_INFO_STREAM("Steering Goal Index: " << steering_dir_index);
         // TODO: Function to determine steering angle
-        steering_angle = DetermineSteeringAngle(*(p));
+        steering_angle = DetermineSteeringAngle(steering_dir_index);
 
         // Create nav message
         ackermann_msgs::AckermannDriveStamped drive_st_msg;
@@ -131,7 +131,7 @@ public:
     }
 
 
-    int * LargestConsecutiveNonZeroGap(const double lidar[], int array_size){
+    int LargestConsecutiveNonZeroGap(const double lidar[], int array_size){
 
         int start_index, end_index, length, middle_index;
         int start_index_longest, end_index_longest, length_longest = 1;
@@ -176,9 +176,9 @@ public:
 
         //cout << "The middle index is: " << middle_index << endl;
 
-        static int r[4] = {middle_index, start_index_longest, end_index_longest, length_longest};
+        //static int r[4] = {middle_index, start_index_longest, end_index_longest, length_longest};
 
-        return r;
+        return middle_index;
 
 
     }
