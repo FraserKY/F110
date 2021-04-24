@@ -64,6 +64,7 @@ public:
         // Find the largest consecutive non-zero gap
         p = LargestConsecutiveNonZeroGap(lidar, array_size);
 
+        cout << "Middle Index: " << *(p) << endl;
         // TODO: Function to determine steering angle
         steering_angle = DetermineSteeringAngle(*(p));
 
@@ -132,7 +133,7 @@ public:
 
     int * LargestConsecutiveNonZeroGap(const double lidar[], int array_size){
 
-        int start_index, end_index, length;
+        int start_index, end_index, length, middle_index;
         int start_index_longest, end_index_longest, length_longest = 1;
 
         // Loop through array to find largest gap
@@ -171,7 +172,7 @@ public:
 
         //ReturnMiddleOfGap(r);
         // Find the middle of the gap
-        int middle_index = (start_index_longest + end_index_longest) / 2;
+        middle_index = (start_index_longest + end_index_longest) / 2;
 
         //cout << "The middle index is: " << middle_index << endl;
 
