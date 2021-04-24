@@ -70,7 +70,7 @@ public:
         // TODO: Function to determine speed based on steering angle
 
         drive_msg.steering_angle = steering_angle;
-        drive_msg.speed = 0.3;
+        drive_msg.speed = 0.1;
 
         // Set Ackerman Message to a Stamped Ackermann Message
         drive_st_msg.drive = drive_msg;
@@ -203,7 +203,7 @@ int main(int argc, char ** argv){
     // Receive all callbacks
     //ros::spin();
 
-    ros::Rate loop_rate(5);
+    ros::Rate loop_rate(1);
 
     while (ros::ok()) {
         loop_rate.sleep();
