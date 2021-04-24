@@ -13,10 +13,10 @@ private:
     ros::NodeHandle n;
 
     // Subscriber for Laser Scan Data
-    ros::Subscriber LaserScan_sub;
+    ros::Subscriber LaserScanSub;
 
     // Publisher for steering input and speed
-    ros::Publisher Nav_sub;
+    ros::Publisher Nav_pub;
 
 public:
     follow_the_gap(){
@@ -27,7 +27,10 @@ public:
         n.getParam("scan_topic", laser_scan_topic);
 
         // Create a subscriber to listen to the laser scan messages
-        LaserScan_sub = n.subscribe(laser_scan_topic, 1, &follow_the_gap::LidarCallBack, this);
+        LaserScanSub = n.subscribe(laser_scan_topic, 1, &follow_the_gap::LidarCallBack, this);
+
+        // Create a publisher to send drive commands
+        DriveMessagePub = n.advertise<ackermann_msgs::AckermannDriveStamped>(drive_topic, 10);
     }
 
     void LidarCallBack(const sensor_msgs::LaserScan & msg){
@@ -59,7 +62,22 @@ public:
         // Find the largest consecutive non-zero gap
         p = LargestConsecutiveNonZeroGap(lidar, array_size);
 
+        // TODO Function to determine steering angle
 
+        // Create nav message
+        ackermann_msgs::AckermannDriveStamped drive_st_msg;
+        ackermann_msgs::AckermannDrive drive_msg;
+
+        // TODO: Function to determine speed based on steering angle
+
+        drive_msg.steering_angle = 5;
+        drive_msg.speed = 1.0;
+
+        // Set Ackerman Message to a Stamped Ackermann Message
+        drive_st_msg.drive = drive_msg;
+
+        // publish AckermannDriveStamped message to drive topic
+        DriveMessagePub.publish(drive_st_msg);
     }
 
     void PreProcessArray(double lidar[1080]) {
