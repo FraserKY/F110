@@ -86,7 +86,7 @@ public:
         int min_index;
 
         // Find the smallest value in the array within 120 degree front view
-        for (int x = 360; x < 720; x++) {
+        for (int x = 270; x < 810; x++) {
 
             if (lidar[x] < min_val) {
 
@@ -114,7 +114,7 @@ public:
 
         // Set all values not within a 120 degree view forwards centred around the x axis to 0
         for (int x = 0; x < 1080; x++) {
-            if (x < 360 or x > 720){
+            if (x < 270 or x > 810){
                 lidar[x] = 0.0;
             }
         }
