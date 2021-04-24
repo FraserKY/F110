@@ -23,8 +23,9 @@ public:
         //Initialise Node Handle
         n = ros::NodeHandle("~");
 
-        std::string laser_scan_topic;
+        std::string laser_scan_topic, drive_topic;
         n.getParam("scan_topic", laser_scan_topic);
+        n.getParam("follow_the_gap_topic", drive_topic);
 
         // Create a subscriber to listen to the laser scan messages
         LaserScanSub = n.subscribe(laser_scan_topic, 1, &follow_the_gap::LidarCallBack, this);
