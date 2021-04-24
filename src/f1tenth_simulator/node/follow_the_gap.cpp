@@ -101,6 +101,10 @@ public:
             }
         }
 
+        cout << "Lidar index 800: " << lidar[800] << endl;
+
+        cout << "Lidar index 120: " << lidar[120] << endl;
+
         //return min_index;
     }
 
