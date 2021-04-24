@@ -50,22 +50,17 @@ public:
 
         }
 
-        //ROS_INFO_STREAM("Vector: " << scan_ranges);
-
         PreProcessArray(lidar);
-
-        //ROS_INFO_STREAM("Lidar Array Change Test: " << lidar[b]);
 
         // Calculate array size
         int array_size = sizeof(lidar) / sizeof(lidar[0]);
 
-        // Create a pointer to access return values from LCNZG function
 
         // Find the largest consecutive non-zero gap
         steering_dir_index = LargestConsecutiveNonZeroGap(lidar, array_size);
 
         ROS_INFO_STREAM("Steering Goal Index: " << steering_dir_index);
-        // TODO: Function to determine steering angle
+
         steering_angle = DetermineSteeringAngle(steering_dir_index);
 
         // Create nav message
@@ -75,7 +70,7 @@ public:
         // TODO: Function to determine speed based on steering angle
 
         drive_msg.steering_angle = steering_angle;
-        drive_msg.speed = 1.0;
+        drive_msg.speed = 0.3;
 
         // Set Ackerman Message to a Stamped Ackermann Message
         drive_st_msg.drive = drive_msg;
@@ -208,7 +203,7 @@ int main(int argc, char ** argv){
     // Receive all callbacks
     //ros::spin();
 
-    ros::Rate loop_rate(1);
+    ros::Rate loop_rate(5);
 
     while (ros::ok()) {
         loop_rate.sleep();
