@@ -39,6 +39,7 @@ public:
         // Create pointer for lidar processed:
 
         double lidar[1080] = {};
+        double steering_angle;
 
         for (int x = 0; x < 1080; x++){
             lidar[x] = msg.ranges[x];
@@ -63,7 +64,8 @@ public:
         // Find the largest consecutive non-zero gap
         p = LargestConsecutiveNonZeroGap(lidar, array_size);
 
-        // TODO Function to determine steering angle
+        // TODO: Function to determine steering angle
+        steering_angle = DetermineSteeringAngle(*(p));
 
         // Create nav message
         ackermann_msgs::AckermannDriveStamped drive_st_msg;
@@ -71,7 +73,7 @@ public:
 
         // TODO: Function to determine speed based on steering angle
 
-        drive_msg.steering_angle = 5;
+        drive_msg.steering_angle = steering_angle;
         drive_msg.speed = 1.0;
 
         // Set Ackerman Message to a Stamped Ackermann Message
@@ -178,6 +180,21 @@ public:
         return r;
 
 
+    }
+
+    double DetermineSteeringAngle(int middle_of_gap_index){
+
+        // This function determines the steering angle based on the index of the middle of the largest gap
+        int car_middle_index = 540, angle_increment = 3;
+        double steering_angle;
+
+        // Each index is covers approx 0.3 degrees
+        steering_angle = (car_middle_index - middle_of_gap_index) * angle_increment;
+
+        // Debugging for steering angle
+        cout << "Steering angle: " << steering_angle << endl;
+
+        return steering_angle;
     }
 
 };
