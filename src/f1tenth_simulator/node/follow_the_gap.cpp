@@ -186,7 +186,7 @@ public:
         double steering_angle, angle_increment = 0.33;
 
         // Each index is covers approx 0.3 degrees
-        steering_angle = (car_middle_index - middle_of_gap_index) * angle_increment;
+        steering_angle = (middle_of_gap_index - car_middle_index) * angle_increment;
 
         // TODO: Convert to radians
 
