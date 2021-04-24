@@ -16,7 +16,7 @@ private:
     ros::Subscriber LaserScanSub;
 
     // Publisher for steering input and speed
-    ros::Publisher Nav_pub;
+    ros::Publisher DriveMessagePub;
 
 public:
     follow_the_gap(){
