@@ -142,7 +142,7 @@ public:
             length = 0;
 
             // TODO: dynamically update threshold?
-            while(lidar[x] > 0.5 and x < array_size){
+            while(lidar[x] > 1.0 and x < array_size){
                 // While the value stored at that index is greater than 0, increment length
                 length++;
                 x++;
