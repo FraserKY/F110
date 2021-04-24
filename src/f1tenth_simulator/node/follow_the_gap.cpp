@@ -190,7 +190,7 @@ public:
 
         // TODO: Convert to radians
 
-        steering_angle = steering_angle * (pi/180);
+        steering_angle = steering_angle * (M_PI/180);
 
         // Debugging for steering angle
         ROS_INFO_STREAM("Steering angle: " << steering_angle << "rads");
