@@ -145,7 +145,7 @@ public:
             // Set the length to zero
             length = 0;
 
-            while(lidar[x] > 0.0 and x < array_size){
+            while(lidar[x] > 3.0 and x < array_size){
                 // While the value stored at that index is greater than 0, increment length
                 length++;
                 x++;
