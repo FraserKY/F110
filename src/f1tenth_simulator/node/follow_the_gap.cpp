@@ -64,7 +64,7 @@ public:
         // Find the largest consecutive non-zero gap
         p = LargestConsecutiveNonZeroGap(lidar, array_size);
 
-        cout << "Middle Index: " << *(p) << endl;
+        ROS_INFO_STREAM("Middle Index: " << *(p));
         // TODO: Function to determine steering angle
         steering_angle = DetermineSteeringAngle(*(p));
 
@@ -103,9 +103,9 @@ public:
         }
 
         // Print the smallest value in an array
-        //ROS_INFO_STREAM("Smallest value: " << min_val);
+        ROS_INFO_STREAM("Smallest value: " << min_val);
 
-        //ROS_INFO_STREAM("Index of smallest value: " << min_index);
+        ROS_INFO_STREAM("Index of smallest value: " << min_index);
 
         // Make smallest value and surrounding values 0
         for (int x = -3; x < 3; x++){
@@ -166,9 +166,9 @@ public:
 
         }
 
-        //cout << "The longest length of consecutive non-zero values was: " << length_longest << endl;
-        //cout << "The start index was: " << start_index_longest << endl;
-        //cout << "The end index was: " << end_index_longest << endl;
+        ROS_INFO_STREAM("The longest length of consecutive non-zero values was: " << length_longest);
+        ROS_INFO_STREAM("The start index was: " << start_index_longest);
+        ROS_INFO_STREAM("The end index was: " << end_index_longest);
 
         //ReturnMiddleOfGap(r);
         // Find the middle of the gap
@@ -193,7 +193,7 @@ public:
         steering_angle = (car_middle_index - middle_of_gap_index) * angle_increment;
 
         // Debugging for steering angle
-        cout << "Steering angle: " << steering_angle << endl;
+        ROS_INFO_STREAM("Steering angle: " << steering_angle);
 
         return steering_angle;
     }
