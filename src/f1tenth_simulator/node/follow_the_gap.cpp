@@ -1,6 +1,7 @@
 // This node implements an algorithm to find the largest gap seen by the laser scan, and directs the vehicle towards it.
 
 #include <ros/ros.h>
+#include <math.h>
 
 #include <ackermann_msgs/AckermannDriveStamped.h>
 #include <sensor_msgs/LaserScan.h>
@@ -187,8 +188,12 @@ public:
         // Each index is covers approx 0.3 degrees
         steering_angle = (car_middle_index - middle_of_gap_index) * angle_increment;
 
+        // TODO: Convert to radians
+
+        steering_angle = steering_angle * (pi/180);
+
         // Debugging for steering angle
-        ROS_INFO_STREAM("Steering angle: " << steering_angle);
+        ROS_INFO_STREAM("Steering angle: " << steering_angle << "rads");
 
         return steering_angle;
     }
