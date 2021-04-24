@@ -48,6 +48,15 @@ public:
 
         //ROS_INFO_STREAM("Lidar Array Change Test: " << lidar[b]);
 
+        // Calculate array size
+        int array_size = sizeof(lidar) / sizeof(lidar[0]);
+
+        // Create a pointer to access return values from LCNZG function
+        int *p;
+
+        // Find the largest consecutive non-zero gap
+        p = LargestConsecutiveNonZeroGap(lidar, array_size);
+
 
     }
 
@@ -74,7 +83,6 @@ public:
 
         //ROS_INFO_STREAM("Index of smallest value: " << min_index);
 
-
         // Make smallest value and surrounding values 0
         for (int x = -3; x < 3; x++){
 
@@ -88,7 +96,54 @@ public:
     }
 
 
-    void FindLargestGap(double lidar[], int array_length){
+    int * LargestConsecutiveNonZeroGap(const double lidar[], int array_size){
+
+        int start_index, end_index, length;
+        int start_index_longest, end_index_longest, length_longest = 1;
+
+        // Loop through array to find largest gap
+
+        for(int x = 0; x < array_size; x++){
+
+            // Set the start index to the current index
+            start_index = x;
+            // Set the length to zero
+            length = 0;
+
+            while(lidar[x] > 0.0 and x < array_size){
+                // While the value stored at that index is greater than 0, increment length
+                length++;
+                x++;
+
+            }
+
+            end_index = x;
+            x = end_index;
+
+            if(length > length_longest){
+
+                // If the current run is longer than any previously found run, updated the start index, end index and length
+                start_index_longest = start_index;
+                end_index_longest = end_index - 1;
+                length_longest = length;
+
+            }
+
+        }
+
+        cout << "The longest length of consecutive non-zero values was: " << length_longest << endl;
+        cout << "The start index was: " << start_index_longest << endl;
+        cout << "The end index was: " << end_index_longest << endl;
+
+        //ReturnMiddleOfGap(r);
+        // Find the middle of the gap
+        int middle_index = (start_index + end_index) / 2;
+
+        cout << "The middle index is: " << middle_index << endl;
+
+        static int r[4] = {middle_index, start_index_longest, end_index_longest, length_longest};
+
+        return r;
 
 
     }
