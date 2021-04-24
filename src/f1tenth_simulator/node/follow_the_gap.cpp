@@ -71,7 +71,7 @@ public:
         // TODO: Function to determine speed based on steering angle
 
         drive_msg.steering_angle = steering_angle;
-        drive_msg.speed = 0.2;
+        drive_msg.speed = 0.5;
 
         // Set Ackerman Message to a Stamped Ackermann Message
         drive_st_msg.drive = drive_msg;
