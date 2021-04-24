@@ -67,8 +67,8 @@ public:
         double min_val = 100;
         int min_index;
 
-        // Find the smallest value in the array
-        for (int x = 0; x < 1080; x++) {
+        // Find the smallest value in the array within 120 degree front view
+        for (int x = 360; x < 720; x++) {
 
             if (lidar[x] < min_val) {
 
