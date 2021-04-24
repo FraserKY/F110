@@ -87,6 +87,12 @@ public:
         return min_index;
     }
 
+
+    void FindLargestGap(double lidar[], int array_length){
+
+
+    }
+
 };
 
 int main(int argc, char ** argv){
