@@ -166,7 +166,7 @@ public:
 
         }
 
-        ROS_INFO_STREAM("The longest length of consecutive non-zero values was: " << length_longest);
+        //ROS_INFO_STREAM("The longest length of consecutive non-zero values was: " << length_longest);
         ROS_INFO_STREAM("The start index was: " << start_index_longest);
         ROS_INFO_STREAM("The end index was: " << end_index_longest);
 
@@ -208,7 +208,7 @@ int main(int argc, char ** argv){
     // Receive all callbacks
     //ros::spin();
 
-    ros::Rate loop_rate(30);
+    ros::Rate loop_rate(1);
 
     while (ros::ok()) {
         loop_rate.sleep();
