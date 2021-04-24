@@ -5,6 +5,8 @@
 #include <ackermann_msgs/AckermannDriveStamped.h>
 #include <sensor_msgs/LaserScan.h>
 
+using namespace std;
+
 class follow_the_gap{
 private:
     // Define node handle
@@ -92,7 +94,7 @@ public:
 
         }
 
-        return min_index;
+        //return min_index;
     }
 
 
