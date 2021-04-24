@@ -101,9 +101,9 @@ public:
             }
         }
 
-        cout << "Lidar index 800: " << lidar[800] << endl;
+        //cout << "Lidar index 800: " << lidar[800] << endl;
 
-        cout << "Lidar index 120: " << lidar[120] << endl;
+        //cout << "Lidar index 120: " << lidar[120] << endl;
 
         //return min_index;
     }
@@ -144,15 +144,15 @@ public:
 
         }
 
-        //cout << "The longest length of consecutive non-zero values was: " << length_longest << endl;
-        //cout << "The start index was: " << start_index_longest << endl;
-        //cout << "The end index was: " << end_index_longest << endl;
+        cout << "The longest length of consecutive non-zero values was: " << length_longest << endl;
+        cout << "The start index was: " << start_index_longest << endl;
+        cout << "The end index was: " << end_index_longest << endl;
 
         //ReturnMiddleOfGap(r);
         // Find the middle of the gap
         int middle_index = (start_index + end_index) / 2;
 
-        //cout << "The middle index is: " << middle_index << endl;
+        cout << "The middle index is: " << middle_index << endl;
 
         static int r[4] = {middle_index, start_index_longest, end_index_longest, length_longest};
 
