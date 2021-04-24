@@ -94,6 +94,13 @@ public:
 
         }
 
+        // Set all values not within a 120 degree view forwards centred around the x axis to 0
+        for (int x = 0; x < 1080; x++) {
+            if (x < 360 or x > 720){
+                lidar[x] = 0.0;
+            }
+        }
+
         //return min_index;
     }
 
@@ -133,15 +140,15 @@ public:
 
         }
 
-        cout << "The longest length of consecutive non-zero values was: " << length_longest << endl;
-        cout << "The start index was: " << start_index_longest << endl;
-        cout << "The end index was: " << end_index_longest << endl;
+        //cout << "The longest length of consecutive non-zero values was: " << length_longest << endl;
+        //cout << "The start index was: " << start_index_longest << endl;
+        //cout << "The end index was: " << end_index_longest << endl;
 
         //ReturnMiddleOfGap(r);
         // Find the middle of the gap
         int middle_index = (start_index + end_index) / 2;
 
-        cout << "The middle index is: " << middle_index << endl;
+        //cout << "The middle index is: " << middle_index << endl;
 
         static int r[4] = {middle_index, start_index_longest, end_index_longest, length_longest};
 
