@@ -150,7 +150,7 @@ public:
 
         //ReturnMiddleOfGap(r);
         // Find the middle of the gap
-        int middle_index = (start_index + end_index) / 2;
+        int middle_index = (start_index_longest + end_index_longest) / 2;
 
         cout << "The middle index is: " << middle_index << endl;
 
