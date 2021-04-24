@@ -186,7 +186,7 @@ public:
     double DetermineSteeringAngle(int middle_of_gap_index){
 
         // This function determines the steering angle based on the index of the middle of the largest gap
-        int car_middle_index = 540, angle_increment = 3;
+        int car_middle_index = 540, angle_increment = 0.33;
         double steering_angle;
 
         // Each index is covers approx 0.3 degrees
