@@ -71,9 +71,9 @@ public:
         // TODO: Function to determine speed based on steering angle
 
         drive_msg.steering_angle = steering_angle;
-        drive_msg.speed = DetSpeed(steering_angle);
+        drive_msg.speed = 1.0;//DetSpeed(steering_angle);
 
-        ROS_INFO_STREAM("Speed: " << drive_msg.speed);
+       // ROS_INFO_STREAM("Speed: " << drive_msg.speed);
 
         // Set Ackerman Message to a Stamped Ackermann Message
         drive_st_msg.drive = drive_msg;
@@ -195,7 +195,7 @@ public:
         steering_angle = steering_angle * (M_PI/180);
 
         // Debugging for steering angle
-        ROS_INFO_STREAM("Steering angle: " << steering_angle << "rads");
+        ROS_INFO_STREAM("Steering angle: " << steering_angle << " rads");
 
         return steering_angle;
     }
@@ -203,7 +203,7 @@ public:
     double DetSpeed(const double steering_angle_rads){
         // Function determines speed based on steering angle
         if(steering_angle_rads <= 0.05){
-            return 3.0;
+            return 4.0;
         }
         else if (steering_angle_rads < 0.2 and steering_angle_rads > 0.05){
             return 2.0;
