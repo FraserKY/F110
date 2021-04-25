@@ -60,7 +60,7 @@ public:
         // Find the largest consecutive non-zero gap
         steering_dir_index = LargestConsecutiveNonZeroGap(lidar, array_size);
 
-        ROS_INFO_STREAM("Steering Goal Index: " << steering_dir_index);
+        //ROS_INFO_STREAM("Steering Goal Index: " << steering_dir_index);
 
         steering_angle = DetermineSteeringAngle(steering_dir_index);
 
@@ -198,10 +198,10 @@ public:
         return steering_angle;
     }
 
-    double DetSpeed(double steering_angle_rads){
-
+    double DetSpeed(const double steering_angle_rads){
+        // Function determines speed based on steering angle
         if(steering_angle_rads <= 0.05){
-            return 6.0;
+            return 3.0;
         }
         else if (steering_angle_rads < 0.2 and steering_angle_rads > 0.05){
             return 3.0;
