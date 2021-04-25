@@ -205,12 +205,15 @@ public:
         if(steering_angle_rads <= 0.05){
             return 4.0;
         }
-        else if (steering_angle_rads < 0.35 and steering_angle_rads > 0.05){
-            return 3.0;
+        else if (steering_angle_rads <= 0.35 and steering_angle_rads > 0.05){
+            return 1.0;
         }
 
-        else if(steering_angle_rads > 0.35){
+        else if(steering_angle_rads > 0.35 and steering_angle_rads <= 0.40){
             return 1.0;
+        }
+        else if(steering_angle_rads > 0.4){
+            return 0.5;
         }
         else{
             return 0;
