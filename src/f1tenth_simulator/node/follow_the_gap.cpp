@@ -73,6 +73,8 @@ public:
         drive_msg.steering_angle = steering_angle;
         drive_msg.speed = DetSpeed(steering_angle);
 
+        ROS_INFO_STREAM("Speed: " << drive_msg.speed);
+
         // Set Ackerman Message to a Stamped Ackermann Message
         drive_st_msg.drive = drive_msg;
 
@@ -99,9 +101,9 @@ public:
         }
 
         // Print the smallest value in an array
-        ROS_INFO_STREAM("Smallest value: " << min_val);
+        //ROS_INFO_STREAM("Smallest value: " << min_val);
 
-        ROS_INFO_STREAM("Index of smallest value: " << min_index);
+        //ROS_INFO_STREAM("Index of smallest value: " << min_index);
 
         // Make smallest value and surrounding values 0
         for (int x = -3; x < 3; x++){
@@ -164,8 +166,8 @@ public:
         }
 
         //ROS_INFO_STREAM("The longest length of consecutive non-zero values was: " << length_longest);
-        ROS_INFO_STREAM("The start index was: " << start_index_longest);
-        ROS_INFO_STREAM("The end index was: " << end_index_longest);
+        //ROS_INFO_STREAM("The start index was: " << start_index_longest);
+        //ROS_INFO_STREAM("The end index was: " << end_index_longest);
 
         //ReturnMiddleOfGap(r);
         // Find the middle of the gap
@@ -225,7 +227,7 @@ int main(int argc, char ** argv){
     // Receive all callbacks
     //ros::spin();
 
-    ros::Rate loop_rate(5);
+    ros::Rate loop_rate(10);
 
     while (ros::ok()) {
         loop_rate.sleep();
