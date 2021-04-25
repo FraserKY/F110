@@ -71,7 +71,7 @@ public:
         // TODO: Function to determine speed based on steering angle
 
         drive_msg.steering_angle = steering_angle;
-        drive_msg.speed = DetSpeed(steering_angle);
+        drive_msg.speed = 1.0;// DetSpeed(steering_angle);
 
        // ROS_INFO_STREAM("Speed: " << drive_msg.speed);
 
@@ -173,7 +173,7 @@ public:
         // Find the middle of the gap
         middle_index = (start_index_longest + end_index_longest) / 2;
 
-        //cout << "The middle index is: " << middle_index << endl;
+        cout << "The middle of the gap index is: " << middle_index << endl;
 
         //static int r[4] = {middle_index, start_index_longest, end_index_longest, length_longest};
 
