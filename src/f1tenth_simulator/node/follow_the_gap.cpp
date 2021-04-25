@@ -71,7 +71,7 @@ public:
         // TODO: Function to determine speed based on steering angle
 
         drive_msg.steering_angle = steering_angle;
-        drive_msg.speed = 0.5;
+        drive_msg.speed = DetSpeed(steering_angle);
 
         // Set Ackerman Message to a Stamped Ackermann Message
         drive_st_msg.drive = drive_msg;
@@ -189,14 +189,30 @@ public:
         // Each index is covers approx 0.3 degrees
         steering_angle = (middle_of_gap_index - car_middle_index) * angle_increment;
 
-        // TODO: Convert to radians
-
+        // Convert to radians
         steering_angle = steering_angle * (M_PI/180);
 
         // Debugging for steering angle
         ROS_INFO_STREAM("Steering angle: " << steering_angle << "rads");
 
         return steering_angle;
+    }
+
+    double DetSpeed(double steering_angle_rads){
+
+        if(steering_angle_rads <= 0.05){
+            return 6.0;
+        }
+        else if (steering_angle_rads < 0.2 and steering_angle_rads > 0.05){
+            return 3.0;
+        }
+
+        else if(steering_angle_rads > 0.5){
+            return 1.0;
+        }
+        else{
+            return 0;
+        }
     }
 
 };
