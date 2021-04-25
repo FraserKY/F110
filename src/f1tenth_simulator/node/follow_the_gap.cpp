@@ -206,10 +206,10 @@ public:
             return 3.0;
         }
         else if (steering_angle_rads < 0.2 and steering_angle_rads > 0.05){
-            return 3.0;
+            return 2.0;
         }
 
-        else if(steering_angle_rads > 0.5){
+        else if(steering_angle_rads > 0.2){
             return 1.0;
         }
         else{
