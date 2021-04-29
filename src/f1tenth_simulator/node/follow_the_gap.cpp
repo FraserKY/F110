@@ -42,6 +42,7 @@ public:
         double lidar[1080] = {};
         double steering_angle;
         int steering_dir_index;
+        int nearest_point
 
         for (int x = 0; x < 1080; x++){
             lidar[x] = msg.ranges[x];
@@ -51,7 +52,7 @@ public:
 
         }
 
-        PreProcessArray(lidar);
+        nearest_point = PreProcessArray(lidar);
 
         // Calculate array size
         int array_size = sizeof(lidar) / sizeof(lidar[0]);
@@ -62,16 +63,24 @@ public:
 
         //ROS_INFO_STREAM("Steering Goal Index: " << steering_dir_index);
 
-        steering_angle = DetermineSteeringAngle(steering_dir_index);
+        // Only change the steering angle, if the closest point is greater than some distance away, enables car to travel faster as
+        // there will be less turning
+        if (nearest_point >= 1.0){
+            steering_angle = 0.0;
+        }
+        else{
+            // If nearest point is closer than threshold, update steering angle
+            steering_angle = DetermineSteeringAngle(steering_dir_index);
+        }
 
         // Create nav message
         ackermann_msgs::AckermannDriveStamped drive_st_msg;
         ackermann_msgs::AckermannDrive drive_msg;
 
-        // TODO: Function to determine speed based on steering angle
-
         drive_msg.steering_angle = steering_angle;
-        drive_msg.speed = 1.0;// DetSpeed(steering_angle);
+
+        //Function to determine speed based on steering angle
+        drive_msg.speed = DetSpeed(steering_angle);
 
        // ROS_INFO_STREAM("Speed: " << drive_msg.speed);
 
@@ -101,7 +110,7 @@ public:
         }
 
         // Print the smallest value in an array
-        //ROS_INFO_STREAM("Smallest value: " << min_val);
+        ROS_INFO_STREAM("Nearest Point: " << min_val);
 
         //ROS_INFO_STREAM("Index of smallest value: " << min_index);
 
@@ -125,7 +134,7 @@ public:
 
         //cout << "Lidar index 120: " << lidar[120] << endl;
 
-        //return min_index;
+        return min_val;
     }
 
 
@@ -206,7 +215,7 @@ public:
             return 4.0;
         }
         else if (steering_angle_rads <= 0.35 and steering_angle_rads > 0.05){
-            return 1.0;
+            return 2.0;
         }
 
         else if(steering_angle_rads > 0.35 and steering_angle_rads <= 0.40){
