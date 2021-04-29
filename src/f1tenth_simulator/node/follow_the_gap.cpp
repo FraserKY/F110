@@ -157,7 +157,7 @@ public:
             // TODO: dynamically update threshold?
             //scan_average = average_of_scan(lidar);
 
-            while(lidar[x] > 2.0 and x < array_size){
+            while(lidar[x] > 1.0 and x < array_size){
                 // While the value stored at that index is greater than 0, increment length
                 length++;
                 x++;
@@ -216,14 +216,14 @@ public:
     double DetSpeed(const double steering_angle_rads){
         // Function determines speed based on steering angle
         if(steering_angle_rads <= 0.1){
-            return 5.0;
+            return 4.0;
         }
         else if (steering_angle_rads <= 0.5 and steering_angle_rads > 0.1){
             return 2.0;
         }
 
         else if(steering_angle_rads > 0.5 and steering_angle_rads <= 0.7){
-            return 2.0;
+            return 1.0;
         }
         else if(steering_angle_rads > 0.7){
             return 0.5;
