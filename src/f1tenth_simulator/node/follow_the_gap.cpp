@@ -42,7 +42,7 @@ public:
         double lidar[1080] = {};
         double steering_angle;
         int steering_dir_index;
-        int nearest_point
+        int nearest_point;
 
         for (int x = 0; x < 1080; x++){
             lidar[x] = msg.ranges[x];
@@ -91,7 +91,7 @@ public:
         DriveMessagePub.publish(drive_st_msg);
     }
 
-    void PreProcessArray(double lidar[1080]) {
+    double PreProcessArray(double lidar[1080]) {
 
         double min_val = 100;
         int min_index;
