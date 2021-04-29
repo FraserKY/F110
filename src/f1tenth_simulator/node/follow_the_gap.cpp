@@ -240,7 +240,7 @@ int main(int argc, char ** argv){
     // Receive all callbacks
     //ros::spin();
 
-    ros::Rate loop_rate(10);
+    ros::Rate loop_rate(20);
 
     while (ros::ok()) {
         loop_rate.sleep();
