@@ -63,15 +63,16 @@ public:
 
         //ROS_INFO_STREAM("Steering Goal Index: " << steering_dir_index);
 
+        steering_angle = DetermineSteeringAngle(steering_dir_index);
+
         // Only change the steering angle, if the closest point is greater than some distance away, enables car to travel faster as
         // there will be less turning
-        if (nearest_point >= 1.0){
-            steering_angle = 0.0;
+        if (steering_angle > 0.5){
+            if (nearest_point > 2.0){
+                steering_angle = 0.5;
+            }
         }
-        else{
-            // If nearest point is closer than threshold, update steering angle
-            steering_angle = DetermineSteeringAngle(steering_dir_index);
-        }
+
 
         // Create nav message
         ackermann_msgs::AckermannDriveStamped drive_st_msg;
