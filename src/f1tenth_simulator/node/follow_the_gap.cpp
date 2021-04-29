@@ -143,6 +143,7 @@ public:
 
         int start_index, end_index, length, middle_index;
         int start_index_longest, end_index_longest, length_longest = 1;
+        double scan_average;
 
         // Loop through array to find largest gap
 
@@ -154,7 +155,9 @@ public:
             length = 0;
 
             // TODO: dynamically update threshold?
-            while(lidar[x] > 1.0 and x < array_size){
+            scan_average = average_of_scan(lidar);
+
+            while(lidar[x] > scan_average and x < array_size){
                 // While the value stored at that index is greater than 0, increment length
                 length++;
                 x++;
@@ -228,6 +231,22 @@ public:
         else{
             return 0;
         }
+    }
+
+    double average_of_scan(const double array[]){
+
+        double sum = 0;
+        double length = 0.0;
+        double average;
+
+        for (int x = 270; x <= 810; x++){
+            sum = sum + array[x];
+            length = length + 1;
+        }
+
+        average = sum / length;
+
+        return average;
     }
 
 };
