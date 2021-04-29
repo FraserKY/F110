@@ -219,7 +219,7 @@ public:
             return 5.0;
         }
         else if (steering_angle_rads <= 0.5 and steering_angle_rads > 0.1){
-            return 3.0;
+            return 2.0;
         }
 
         else if(steering_angle_rads > 0.5 and steering_angle_rads <= 0.7){
@@ -259,7 +259,7 @@ int main(int argc, char ** argv){
     // Receive all callbacks
     //ros::spin();
 
-    ros::Rate loop_rate(8);
+    ros::Rate loop_rate(20);
 
     while (ros::ok()) {
         loop_rate.sleep();
