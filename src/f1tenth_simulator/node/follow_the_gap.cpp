@@ -216,7 +216,7 @@ public:
     double DetSpeed(const double steering_angle_rads){
         // Function determines speed based on steering angle
         if(steering_angle_rads <= 0.1){
-            return 6.0;
+            return 5.0;
         }
         else if (steering_angle_rads <= 0.5 and steering_angle_rads > 0.1){
             return 3.0;
