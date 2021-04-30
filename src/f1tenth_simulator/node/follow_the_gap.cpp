@@ -116,7 +116,7 @@ public:
         //ROS_INFO_STREAM("Index of smallest value: " << min_index);
 
         // Make smallest value and surrounding values 0
-        for (int x = -3; x < 3; x++){
+        for (int x = -5; x < 5; x++){
 
             lidar[min_index + x] = 0.0;
 
