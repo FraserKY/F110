@@ -155,9 +155,9 @@ public:
             length = 0;
 
             // TODO: dynamically update threshold?
-            //scan_average = average_of_scan(lidar);
+            scan_average = average_of_scan(lidar);
 
-            while(lidar[x] > 1.0 and x < array_size){
+            while(lidar[x] > scan_average and x < array_size){
                 // While the value stored at that index is greater than 0, increment length
                 length++;
                 x++;
