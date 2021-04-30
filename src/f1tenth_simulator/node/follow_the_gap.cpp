@@ -257,14 +257,14 @@ int main(int argc, char ** argv){
     // Call class function
     follow_the_gap ftg;
     // Receive all callbacks
-    ros::spin();
+    //ros::spin();
 
-    /*ros::Rate loop_rate(10);
+    ros::Rate loop_rate(10);
 
     while (ros::ok()) {
         loop_rate.sleep();
         ros::spinOnce();
-    }*/
+    }
 
 
     return 0;
